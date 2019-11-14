@@ -29,6 +29,42 @@
 
     <section id='signUp'>
         <!-- Charlie -->
+        <?php
+            if (isset($_GET['errors'])) {
+            $errors = json_decode($_GET['errors'], true);
+            print_r($errors);
+        }
+        ?>
+
+        <form  action=".php" method="POST" id="registration">
+            <label for="user">Username: </label><input type="text" id="user" name="user" autocomplete="off"><br>
+                <?php
+                    if (isset($errors['user_required'])) {
+                        echo "User required";
+                    } elseif(isset($errors['used'])) {
+                        echo "User already used";
+                    }
+                ?>
+            <br>
+            <label for="email">Email: </label><input type="text" id="email" name="email" autocomplete="off"><br>
+                <?php
+                    if (isset($errors['email_required'])) {
+                        echo "Email required";
+                    } elseif(isset($errors['email_invalid'])) {
+                        echo "Email invalid";
+                    }
+                ?>
+            <br>
+            <label for="password">Password: </label><input type="password" id="password" name="password" autocomplete="off" pattern=".{8,12}" required title="8 to 12 characters"><br><br>
+            <label for="confirm">Confirm Password: </label><input type="password" id="confirm" name="confirm" autocomplete="off" pattern=".{8,12}"><br>
+                <?php
+                    if (isset($errors['pwd_not_match'])) {
+                        echo "Passwords do not match";
+                    }
+                ?>
+            <br>
+            <input type="submit" value="Sign Up!"><br><br>
+        </form>
     </section>
     <script src="./public/js/OAuth.js"></script>
   </body>

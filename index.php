@@ -1,3 +1,12 @@
 <?php 
+require("./controller/controller.php");
 
-$index = "branch";
+if(isset($_GET['action'])) {
+    if($_GET['action'] == 'login') {
+        loginPage();
+    } else if ($_GET['action'] == 'profile'){
+        loadProfile();
+    }
+} else {
+    loginPage();
+}

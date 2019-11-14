@@ -20,6 +20,7 @@
             </div>
             <div id="gmail">
                 <!-- Nanee -->
+                
                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 <!-- <a href="#" onclick="signOut();">Sign out</a> -->
             </div>

@@ -5,5 +5,7 @@ function loginPage() {
 }
 
 function loadProfile(){
+    verifyUser();
+    require('./model/model.php');
     require("./view/profile.php");
 }

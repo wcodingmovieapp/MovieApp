@@ -28,7 +28,7 @@
 }
 
 /*This is the page content, I think? */
-.content {padding:20px;
+.content {padding:22px;
          text-align: center;
          background-color: grey;
          }

@@ -6,20 +6,12 @@ function loginPage() {
 }
 // insert or connect the user
 function loginUser($params){
-    $model = new Model();
-    $model->loginUser($params);
-}
-
-function loadProfile($postParams){
-    $username = htmlspecialchars($postParams['username']);
-    $password = htmlspecialchars($postParams['password']);
     $manageUser = new ManageUser();
-    $result = $manageUser->verifyUser($username, $password);
-    require("./view/profile.php");
+    $manageUser->loginUser($params);
 }
 
-function viewProfile($userId) {
-    $model = new Model();
-    $user = $model->loadProfile($userId);
-    header("./view/profile.php");
+function viewProfile($params) {
+    $manageUser = new ManageUser();
+    $user = $manageUser->viewProfile($params);
+    require("./view/profile.php");
 }

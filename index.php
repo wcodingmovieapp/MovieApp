@@ -9,31 +9,18 @@ try {
 
             if(isset($_POST['username']) && isset($_POST['password'])) 
             {
-                if(isset($_REQUEST)){
-                    if(!empty($_POST['username']) && !empty($_POST['password'])) 
-                    {
-                        //call the controller     
-                        loadProfile($_POST);
-                    } else {
-                        if($_REQUEST["socialM"]){
-                            loginUser($_REQUEST);
-                        }
-                        else {
-                            throw new Exception('Error: Please fill in username and password');
-                        }   
-                    }
-                    
+                if(!empty($_REQUEST["socialM"])){
+                   loginUser($_REQUEST);
                 } else{
                     throw new Exception('Error: problem with login');
                 }
             }
         } else if($_GET['action'] == 'viewProfile') {
-            if(isset($_GET['userId'])) {
-                viewProfile($_GET['userId']);
+            if(!empty($_REQUEST)) {
+                viewProfile($_REQUEST);
             } else {
-                echo "user not found";
+                throw new Exception('Error: user not found');
             }
-            
         }
     }
     else {

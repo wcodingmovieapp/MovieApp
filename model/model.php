@@ -4,24 +4,55 @@ class ManageUser extends Manager {
 
     function verifyUser($username) {
         $bdd = $this->dbConnect();
-        $req = $bdd->prepare("SELECT username, password FROM users WHERE username = :username");
+        $req = $bdd->prepare("SELECT id FROM users WHERE username = :username");
         $req->execute(array(
             'username' => $username,
         ));
         $result = $req->fetch();
-
-        return ($result) ?  true :  false;
+        return ($result) ?  $result : false;
     }
 
     function loginUser($params){
-        //check
-        // INSERT INTO users() VALUES ()
+        // do it the tests for the isset case normal FB and GMAIL
+        $username = htmlspecialchars($params['username']);
+        $password = htmlspecialchars($params['password']);
 
-        echo "userid";
+
+
+        $userId = $this->verifyUser($username, $password);
+        if($userId){
+            viewProfile($userId);
+        } else {
+            // user creation
+            $bdd = $this->dbConnect();
+            $query = "INSERT INTO .......";
+            $req = $bdd->prepare($query);
+        }
+       
+        echo $userId;
     }
-    function loadProfile($userId) {
-        // SELECT FROM Users WHERE = 
-        //provide back the informations about the user to display the html
+    function viewProfile($params) {
+        print_r($params);
+        $bdd = $this->dbConnect();
+        if(isset($params['userId'])) {
+            
+            $req = $bdd->prepare("SELECT * FROM users WHERE id = :userId");
+            $req->execute(array(
+                'userId' => $userId,
+            ));
+            $user = $req->fetch();
+        } else {
+
+            if(isset($params['username']) && isset($params['password']))
+            $req = $bdd->prepare("SELECT * FROM users WHERE username = :username");
+            // Need to add the password verify here
+            $req->execute(array(
+                'username' => $params['username'],
+            ));
+            $user = $req->fetch();
+        }
+       
+        return ($user) ?  $user : false;
     }
 }
 

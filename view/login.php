@@ -8,16 +8,41 @@
       content="856185366006-bbrto3am0gcfgd0qgrsodl6scame43ma.apps.googleusercontent.com"
     />
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    
+    <style>
+    #socialLogin{
+      display: "inline";
+    }
+    </style>
   </head>
   <body>
+
+ 
     <section id='signIn'>
         <div id='normalLogin'>
             <!-- Steve -->
         </div>
+
+        
         <div id='socialLogin'>
-            <div id="fb">
-                <!-- Jee-Soo -->
-            </div>
+          <div id="facebook">
+          <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+          </fb:login-button>
+
+          <div id="status">
+          </div>
+        </div>
+          
+
+
+          
+
+
+
+
+
+
+
             <div id="gmail">
                 <!-- Nanee -->
                 <div class="g-signin2" data-onsuccess="onSignIn"></div>

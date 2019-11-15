@@ -36,8 +36,8 @@
         }
         ?>
 
-        <form  action=".php" method="POST" id="registration">
-            <label for="user">Username: </label><input type="text" id="user" name="user" autocomplete="off"><br>
+        <form  action="login_post.php" method="POST" id="registration">
+            <label for="username">Username: </label><input type="text" id="username" placeholder="Your Username" name="username" autocomplete="off" ><br>
                 <?php
                     if (isset($errors['user_required'])) {
                         echo "User required";
@@ -46,7 +46,7 @@
                     }
                 ?>
             <br>
-            <label for="email">Email: </label><input type="text" id="email" name="email" autocomplete="off"><br>
+            <label for="email">Email: </label><input type="text" id="email" placeholder="Your Email" name="email" autocomplete="off" ><br>
                 <?php
                     if (isset($errors['email_required'])) {
                         echo "Email required";
@@ -55,8 +55,8 @@
                     }
                 ?>
             <br>
-            <label for="password">Password: </label><input type="password" id="password" name="password" autocomplete="off" pattern=".{8,12}" required title="8 to 12 characters"><br><br>
-            <label for="confirm">Confirm Password: </label><input type="password" id="confirm" name="confirm" autocomplete="off" pattern=".{8,12}"><br>
+            <label for="password">Password: </label><input type="password" id="password" placeholder="Your Password" name="password" autocomplete="off" pattern=".{8,12}"  title="8 to 12 characters"><br><br>
+            <label for="confirm">Confirm Password: </label><input type="password" id="confirm" placeholder="Confirm Password" name="confirm" autocomplete="off" pattern=".{8,12}" ><br>
                 <?php
                     if (isset($errors['pwd_not_match'])) {
                         echo "Passwords do not match";

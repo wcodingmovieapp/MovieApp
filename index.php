@@ -10,20 +10,22 @@ try {
             {
                 if(!empty($_POST['username']) && !empty($_POST['password'])) 
                 {
-                    //call the controller
+                    //call the controller     
                     loadProfile($_POST);
                 } else {
                     throw new Exception('Error: Please fill in username and password');
                 }
 
             }
-        } else {
-            loginPage();
-            }
-}   }
+        }
+    }
+    else {
+        loginPage();
+    }
+}   
 catch(Exception $e) {
     $errorMessage = $e->getMessage();
     $errorFile = $e->getFile();
-    require('./view/login.php');
+    require('./view/error.php');
 }
 

@@ -1,4 +1,5 @@
 <?php 
+require_once('./model/model.php');
 
 function loginPage() {
     require("./view/login.php");
@@ -7,7 +8,7 @@ function loginPage() {
 function loadProfile($postParams){
     $username = htmlspecialchars($postParams['username']);
     $password = htmlspecialchars($postParams['password']);
-    verifyUser($username, $password);
-    require("./model/model.php");
+    $manageUser = new ManageUser();
+    $result = $manageUser->verifyUser($username, $password);
     require("./view/profile.php");
 }

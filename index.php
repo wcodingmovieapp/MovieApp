@@ -19,7 +19,7 @@ try {
             }
         } else {
             loginPage();
-    }
+            }
 }   }
 catch(Exception $e) {
     $errorMessage = $e->getMessage();

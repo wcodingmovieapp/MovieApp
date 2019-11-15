@@ -13,7 +13,8 @@ class manageUser extends Manager {
         if (!$result) {
             echo 'Wrong username or password, please try again.';
         } else {
-            header('Location: index.php?action=profile');
+            echo 'You might be on the profile page';
+            // header('Location: ./index.php?action=profile');
         }
     }
 }

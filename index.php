@@ -17,7 +17,8 @@ try {
                     } else {
                         if($_REQUEST["socialM"]){
                             loginUser($_REQUEST);
-                        }else {
+                        }
+                        else {
                             throw new Exception('Error: Please fill in username and password');
                         }   
                     }

@@ -32,7 +32,7 @@
         <?php
             if (isset($_GET['errors'])) {
             $errors = json_decode($_GET['errors'], true);
-            print_r($errors);
+            // print_r($errors);
         }
         ?>
 
@@ -55,8 +55,17 @@
                     }
                 ?>
             <br>
-            <label for="password">Password: </label><input type="password" id="password" placeholder="Your Password" name="password" autocomplete="off" pattern=".{8,12}"  title="8 to 12 characters"><br><br>
-            <label for="confirm">Confirm Password: </label><input type="password" id="confirm" placeholder="Confirm Password" name="confirm" autocomplete="off" pattern=".{8,12}" ><br>
+            <label for="password">Password: </label><input type="password" id="password" placeholder="Your Password" name="password" autocomplete="off"><br><br>
+                <?php
+                    if (isset($errors['password_required'])) {
+                        echo "Password required";
+                    }
+                    // } elseif(isset($errors['password_invalid'])) {
+                    //     echo "Password invalid";
+                    // }
+                ?>
+            <br>
+            <label for="confirm">Confirm Password: </label><input type="password" id="confirm" placeholder="Confirm Password" name="confirm" autocomplete="off"><br>
                 <?php
                     if (isset($errors['pwd_not_match'])) {
                         echo "Passwords do not match";
@@ -66,6 +75,6 @@
             <input type="submit" value="Sign Up!"><br><br>
         </form>
     </section>
-    <script src="./public/js/OAuth.js"></script>
+    <!-- <script src="./public/js/OAuth.js"></script> -->
   </body>
 </html>

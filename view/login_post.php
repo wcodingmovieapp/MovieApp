@@ -22,8 +22,6 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
     $confirm = $_POST['confirm'];
     $errors=[];
   
-  
-
     if (empty($_POST['username'])) {
         $errors["username_required"] = "true";
     } else {
@@ -45,17 +43,19 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
         }
     }
     if (empty($_POST['password'])) {
-        // echo ($_POST['password']);
         $errors["password_required"] = "true";
     } else {
         // Hash of the password
         $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
         // Password Length 
-        if(strlen($_POST['password']) >= 8) {
+        if(strlen($_POST['password']) <= 8) {
             $errors["password_length"] = "true";
-
         }
+        // Password at least one uppercase and one number
+        // if(($_POST['password'])) {
+
+        // }
     }
     // checking if matching passwords
     if ($pwd != $confirm) {

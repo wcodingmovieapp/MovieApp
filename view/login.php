@@ -60,7 +60,7 @@
                     if (isset($errors['password_required'])) {
                         echo "Password required";
                     } elseif(isset($errors['password_length'])) {
-                        echo "Password invalid";
+                        echo "Password too short";
                     }
                 ?>
             <br>

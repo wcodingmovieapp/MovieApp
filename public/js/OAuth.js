@@ -21,12 +21,12 @@ function onSignIn(googleUser) {
     google_id: profile.getId(),
     username: profile.getGivenName(),
     password: "googleconnexion",
-    image_url: profile.getImageUrl(),
+    imageurl: profile.getImageUrl(),
     email: profile.getEmail(),
     socialM: "gmail",
     action: "loginUser"
   };
-  console.log(profileData);
+
   //trigger ajax on successful sign-in
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "index.php");
@@ -34,7 +34,7 @@ function onSignIn(googleUser) {
   xhr.onload = function() {
     if (xhr.status === 200) {
       console.log("Signed in as: " + xhr.responseText);
-      //window.location.href = "index.php?action=viewProfile&userId=";
+      window.location.href = "index.php?action=viewProfile&userId=";
     }
   };
 

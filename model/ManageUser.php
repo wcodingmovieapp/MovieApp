@@ -12,37 +12,51 @@ class ManageUser extends Manager {
 
     function loginUser($params){
        
-        // do it the tests for the isset case normal FB and GMAIL
         $username = htmlspecialchars($params['username']);
         $password = htmlspecialchars($params['password']);
+        $email = htmlspecialchars($params['email']);
+        $imageurl = htmlspecialchars($params['imageurl']);
+        $socialM = htmlspecialchars($params['socialM']);
 
+        // do it the tests for the isset case normal FB and GMAIL
+        if (isset($socialM)) {
+            if ($socialM == 'gmail') {
+                $userId = $this->verifyUser($username);
+                if($userId){
+                    viewProfile($params);
+                } else {
+                    // user creation
+                    $bdd = $this->dbConnect();
+                    $query = "INSERT INTO users(username, password, email, imageurl, google) VALUES(:username, :password, :email, :imageurl, 1)";
+                    $req = $bdd->prepare($query);
+                    $req->execute(array(
+                        'username' => $username,
+                        'password' => $password,
+                        'email' => $email,
+                        'imageurl' => $imageurl,
+                    ));
+                    // get user id
+                    $userId = $this->verifyUser($username);
+                    echo $userId;
+                    
+                } 
+            } else if ($socialM == 'fb') {
+                //Jee Soo insert FB case here
+            }
+        } //normal login add here
+        
+    } 
 
-
-        $userId = $this->verifyUser($username);
-        if($userId){
-            $userId['userId']=$userId;
-            viewProfile($userId);
-        } else {
-           
-            // user creation
-            $bdd = $this->dbConnect();
-            $query = "INSERT INTO users SELECT( ;
-            $req = $bdd->prepare($query);
-        }
-        echo $userId;
-    }
     function viewProfile($params) {
-        print_r($params);
         $bdd = $this->dbConnect();
-        if(isset($params['userId'])) {
-            
-            $req = $bdd->prepare("SELECT * FROM users WHERE id = :userId");
+        if(isset($params['id'])) {
+            $req = $bdd->prepare("SELECT * FROM users WHERE id = :id");
             $req->execute(array(
-                'userId' => $userId,
+                'id' => $params['id']
             ));
             $user = $req->fetch();
-        } else {
 
+        } else {
             if(isset($params['username']) && isset($params['password']))
             $req = $bdd->prepare("SELECT * FROM users WHERE username = :username");
             // Need to add the password verify here

@@ -59,10 +59,9 @@
                 <?php
                     if (isset($errors['password_required'])) {
                         echo "Password required";
+                    } elseif(isset($errors['password_length'])) {
+                        echo "Password invalid";
                     }
-                    // } elseif(isset($errors['password_invalid'])) {
-                    //     echo "Password invalid";
-                    // }
                 ?>
             <br>
             <label for="confirm">Confirm Password: </label><input type="password" id="confirm" placeholder="Confirm Password" name="confirm" autocomplete="off"><br>

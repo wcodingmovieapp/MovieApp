@@ -50,8 +50,14 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
     } else {
         // Hash of the password
         $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        // checking if matching passwords
+
+        // Password Length 
+        if(strlen($_POST['password']) >= 8) {
+            $errors["password_length"] = "true";
+
+        }
     }
+    // checking if matching passwords
     if ($pwd != $confirm) {
         $errors["pwd_not_match"] =  "true";
         } else {

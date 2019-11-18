@@ -61,6 +61,8 @@
                         echo "Password required";
                     } elseif(isset($errors['password_length'])) {
                         echo "Password too short";
+                    // } elseif(isset($errors["password_character"])) {
+                    //     echo "Password requirements not met - Lowercase, Uppercase, Digit";
                     }
                 ?>
             <br>

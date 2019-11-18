@@ -52,10 +52,6 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
         if(strlen($_POST['password']) <= 8) {
             $errors["password_length"] = "true";
         }
-        // Password at least one uppercase and one number
-        // if(($_POST['password'])) {
-
-        // }
     }
     // checking if matching passwords
     if ($pwd != $confirm) {
@@ -65,10 +61,16 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
             $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
         }
     // Insertion
+    
+    $regex = "#(?=.*\d)(?=.*[a-z])(?=.*[A-Z])#";
+
     if(count($errors)>0) {
+        echo "error";
         $str_errors = json_encode($errors);
         header("Location:login.php?errors=$str_errors");
-    }else {
+
+    // Password at least one lower/uppercase and one digit 
+    } elseif (preg_match($regex, $_POST['password'])){
         $req = $db->prepare('INSERT INTO Users(username, password, email) VALUES(:username, :password, :email)');
         $req->execute(array(
             'username' => $username,
@@ -76,6 +78,8 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
             'email'=> $email
         ));
         header("Location:login.php");
-    }   
+    } else {
+        echo "character error for password";
+    }
 }
 ?>

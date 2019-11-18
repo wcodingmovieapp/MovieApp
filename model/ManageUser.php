@@ -5,30 +5,30 @@ class ManageUser extends Manager {
     function verifyUser($username) {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare("SELECT id FROM users WHERE username = :username");
-        $req->execute(array(
-            'username' => $username,
-        ));
+        $req->execute(array('username' => $username));
         $result = $req->fetch();
         return ($result) ?  $result : false;
     }
 
     function loginUser($params){
+       
         // do it the tests for the isset case normal FB and GMAIL
         $username = htmlspecialchars($params['username']);
         $password = htmlspecialchars($params['password']);
 
 
 
-        $userId = $this->verifyUser($username, $password);
+        $userId = $this->verifyUser($username);
         if($userId){
+            $userId['userId']=$userId;
             viewProfile($userId);
         } else {
+           
             // user creation
             $bdd = $this->dbConnect();
-            $query = "INSERT INTO .......";
+            $query = "INSERT INTO users SELECT( ;
             $req = $bdd->prepare($query);
         }
-       
         echo $userId;
     }
     function viewProfile($params) {

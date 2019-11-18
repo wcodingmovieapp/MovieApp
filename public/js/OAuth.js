@@ -6,25 +6,52 @@
  * 
  * 
 */
+
 function onSignIn(googleUser) {
   //get profile info
+
   var profile = googleUser.getBasicProfile();
-  console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log("username: " + profile.getName());
-  console.log("Image URL: " + profile.getImageUrl());
-  console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
 
   //get user token
-  var id_token = googleUser.getAuthResponse().id_token;
-  //send ID token to server
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "https://yourbackend.example.com/tokensignin");
-  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xhr.onload = function() {
-    console.log("Signed in as: " + xhr.responseText);
+  // var id_token = googleUser.getAuthResponse().id_token;
+
+  //get user data
+  var profileData = {
+    // access_token: id_token,
+    google_id: profile.getId(),
+    username: profile.getGivenName(),
+    password: "googleconnexion",
+    image_url: profile.getImageUrl(),
+    email: profile.getEmail(),
+    socialM: "gmail",
+    action: "loginUser"
   };
-  xhr.send("idtoken=" + id_token);
+  console.log(profileData);
+  //trigger ajax on successful sign-in
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "index.php");
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      console.log("Signed in as: " + xhr.responseText);
+      //window.location.href = "index.php?action=viewProfile&userId=";
+    }
+  };
+
+  xhr.send(JSON.stringify(profileData));
+
+  //on google auth failure
+  // function onFailure(error) {
+  //   //change to throw exception later
+  //   console.log(error);
+  // }
+
+  //when token is verified, how do we know successful?
+  // xhr.send("idtoken=" + id_token);
+  //Once token verified, check if user is in db and create session
+  //Else if not in db, create user in the db and then create session
 }
+
 function signOut() {
   var auth2 = gapi.auth2.getAuthInstance();
   auth2.signOut().then(function() {
@@ -58,7 +85,7 @@ function checkLoginState() {
 
 window.fbAsyncInit = function() {
   FB.init({
-    appId: "2058147720954256",
+    appId: "2798143063608176",
     cookie: true, // Enable cookies to allow the server to access the session.
     xfbml: true, // Parse social plugins on this webpage.
     version: "v5.0" // Use this Graph API version for this call.
@@ -70,16 +97,16 @@ window.fbAsyncInit = function() {
   });
 };
 
-(function(d, s, id) {
-  // Load the SDK asynchronously
-  var js,
-    fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://connect.facebook.net/en_US/sdk.js";
-  fjs.parentNode.insertBefore(js, fjs);
-})(document, "script", "facebook-jssdk");
+// (function(d, s, id) {
+//   // Load the SDK asynchronously
+//   var js,
+//     fjs = d.getElementsByTagName(s)[0];
+//   if (d.getElementById(id)) return;
+//   js = d.createElement(s);
+//   js.id = id;
+//   js.src = "https://connect.facebook.net/en_US/sdk.js";
+//   fjs.parentNode.insertBefore(js, fjs);
+// })(document, "script", "facebook-jssdk");
 
 function testAPI() {
   FB.api("/me", { fields: "email, name" }, function(response) {

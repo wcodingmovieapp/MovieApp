@@ -1,23 +1,24 @@
 <?php 
 require("./controller/controller.php");
-
+$rawBody = file_get_contents("php://input");
+$bodyArr = (array) json_decode($rawBody);
+if(empty($bodyArr)) { $bodyArr =  $_REQUEST;}
 try {
-    if(isset($_GET['action'])) {
-        if($_GET['action'] == 'login') {
+    if(isset($bodyArr['action'])) {
+        if($bodyArr['action'] == 'login') {
             loginPage();
-        } else if ($_GET['action'] == 'loginUser'){
-
-            if(isset($_POST['username']) && isset($_POST['password'])) 
+        } else if ($bodyArr['action'] == 'loginUser'){
+            if(isset($bodyArr['username']) && isset($bodyArr['password'])) 
             {
-                if(!empty($_REQUEST["socialM"])){
-                   loginUser($_REQUEST);
+                if(!empty($bodyArr["socialM"])){
+                   loginUser($bodyArr);
                 } else{
                     throw new Exception('Error: problem with login');
                 }
             }
-        } else if($_GET['action'] == 'viewProfile') {
-            if(!empty($_REQUEST)) {
-                viewProfile($_REQUEST);
+        } else if($bodyArr['action'] == 'viewProfile') {
+            if(!empty($bodyArr)) {
+                viewProfile($bodyArr);
             } else {
                 throw new Exception('Error: user not found');
             }

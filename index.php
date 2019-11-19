@@ -10,7 +10,7 @@ try {
         } else if ($bodyArr['action'] == 'loginUser'){
             if(isset($bodyArr['username']) && isset($bodyArr['password'])) 
             {
-                if(!empty($bodyArr["socialM"])){
+                if(!empty($bodyArr['socialM'])){
                    loginUser($bodyArr);
                 } else{
                     throw new Exception('Error: problem with login');

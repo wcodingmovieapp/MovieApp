@@ -40,7 +40,23 @@ class ManageUser extends Manager {
             }// } else if ($socialM == 'fb') {
             //     //Jee Soo insert FB case here
             // }
-        } //else normal login add here
+        } else { //normal case check
+                $userId = $this->verifyUser($username);
+                if (!$userId) {
+                    // user creation
+                    $bdd = $this->dbConnect();
+                    $query = "INSERT INTO users(username, password, email, imageurl, normal) VALUES(:username, :password, :email, :imageurl, 1)";
+                    $req = $bdd->prepare($query);
+                    $req->execute(array(
+                        'username' => $username,
+                        'password' => $password,
+                        'email' => $email,
+                        'imageurl' => $imageurl,
+                    ));
+                    //get user id
+                    $userId = $this->verifyUser($username);
+                }
+        }
         echo $userId;
     } 
 

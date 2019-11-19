@@ -60,14 +60,20 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
             // Hash of the password
             $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
         }
-    // Insertion
-    
+        
+    // new addition
     $regex = "#(?=.*\d)(?=.*[a-z])(?=.*[A-Z])#";
+    if (!preg_match($regex, $_POST['password'])) {
+        $error["password_character"] = "true";
+    }
+    // Insertions
+    
+    // $regex = "#(?=.*\d)(?=.*[a-z])(?=.*[A-Z])#";
 
     if(count($errors)>0) {
         echo "error";
         $str_errors = json_encode($errors);
-        header("Location:login.php?errors=$str_errors");
+        header("Location:index.php?action=login&errors=$str_errors");
 
     // Password at least one lower/uppercase and one digit 
     } elseif (preg_match($regex, $_POST['password'])){
@@ -77,9 +83,9 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
             'password' => $pass_hache,
             'email'=> $email
         ));
-        header("Location:login.php");
-    } else {
-        echo "character error for password";
+        header("Location:index.php?action=login");
+    // } else {
+    //     echo "character error for password";
     }
 }
 ?>

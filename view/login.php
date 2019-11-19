@@ -36,7 +36,7 @@
         }
         ?>
 
-        <form  action="login_post.php" method="POST" id="registration">
+        <form  action="index.php?action=login" method="POST" id="registration">
             <label for="username">Username: </label><input type="text" id="username" placeholder="Your Username" name="username" autocomplete="off" ><br>
                 <?php
                     if (isset($errors['user_required'])) {
@@ -61,8 +61,8 @@
                         echo "Password required";
                     } elseif(isset($errors['password_length'])) {
                         echo "Password too short";
-                    // } elseif(isset($errors["password_character"])) {
-                    //     echo "Password requirements not met - Lowercase, Uppercase, Digit";
+                    } elseif(isset($errors["password_character"])) {
+                        echo "Password requirements not met - Lowercase, Uppercase, Digit";
                     }
                 ?>
             <br>

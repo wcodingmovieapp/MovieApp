@@ -22,6 +22,19 @@
         <div id='normalLogin'>
             <!-- Steve -->
           <!-- Note to Nanee: Delete below test form when pull Steve's code here -->
+          <?php
+           if(isset ($_REQUEST['errors']) AND $_REQUEST['errors'] == true) {
+               if($_REQUEST['errors'] == "success") {
+                echo "
+                <div id='successSubscribe'>
+                    <span>Thank you for subscribing. Please Log in now </span>
+                </div> ";
+               } else {
+                $errors = (array) json_decode($_REQUEST['errors']);
+               }
+              
+           }
+        ?>
           <form name="myForm" id="myForm" method="POST" action="./index.php?action=viewProfile">
             <label>Username: <input name="username" id="username" type="text"/></label><br></br>
             <label>Password: <input name="password" id="password" type="password"/></label><br></br>
@@ -61,14 +74,7 @@
 
     <section id='signUp'>
         <!-- Charlie -->
-        <?php
-            if (isset($_GET['errors'])) {
-            $errors = json_decode($_GET['errors'], true);
-            // print_r($errors);
-        }
-        ?>
-
-        <form  action="index.php?action=login" method="POST" id="registration">
+        <form  action="index.php?action=subscribeUser" method="POST" id="registration">
             <label for="username">Username: </label><input type="text" id="username" placeholder="Your Username" name="username" autocomplete="off" ><br>
                 <?php
                     if (isset($errors['user_required'])) {

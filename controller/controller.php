@@ -15,3 +15,14 @@ function viewProfile($params) {
     $user = $manageUser->viewProfile($params);
     require("./view/profile.php");
 }
+function subscribeUser($params) {
+    $manageUser = new ManageUser();
+    $errors = $manageUser->subscribeUser($params);
+    $location = "Location:index.php?action=login&";
+    if($errors !== "success") {
+        $location.="errors=".json_encode($errors);
+    } else if ($errors == "success") {
+        $location.="errors=success";
+    }
+    header($location);
+}

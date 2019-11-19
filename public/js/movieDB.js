@@ -1,4 +1,4 @@
-let userQuery = "rush hour 2";
+let userQuery = document.getElementById('title').value;
 let movieId = "";
 let movieTitle = "";
 let movieReleaseDate = "";
@@ -6,10 +6,10 @@ let movieDirector = "";
 let movieActors = "";
 let moviePoster = "http://image.tmdb.org/t/p/w185/"
 
+function fetchData(e) {
 
-
-
-fetch(`https://api.themoviedb.org/3/search/movie?api_key=a7a2be31391543b1180047cd25bd3045&language=en-US&query=${userQuery}`)
+  console.log(e);
+  fetch(`https://api.themoviedb.org/3/search/movie?api_key=a7a2be31391543b1180047cd25bd3045&language=en-US&query=${userQuery}`)
   .then(response => {
     return response.json()
   })
@@ -19,16 +19,22 @@ fetch(`https://api.themoviedb.org/3/search/movie?api_key=a7a2be31391543b1180047c
     movieTitle = data.results[0].title;
     movieReleaseDate = data.results[0].release_date;
     moviePoster += data.results[0].poster_path;
-    movieSearch();
+    searchMovie();
 
   })
   .catch(err => {
     // Do something for an error here
   })
+ 
+
+}
 
 
 
-  function movieSearch() {
+
+  function searchMovie() {
+
+
   fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=a7a2be31391543b1180047cd25bd3045`)
   .then(response => {
     return response.json()
@@ -44,7 +50,7 @@ fetch(`https://api.themoviedb.org/3/search/movie?api_key=a7a2be31391543b1180047c
         movieActors = data.cast[0].name + " " + data.cast[1].name + " " + data.cast[2].name;
     }
 
-    movieData = {
+    let movieData = {
       "movieId": movieId,
       "title": movieTitle,
       "releaseDate": movieReleaseDate,
@@ -53,15 +59,16 @@ fetch(`https://api.themoviedb.org/3/search/movie?api_key=a7a2be31391543b1180047c
       "poster": moviePoster,
       "action" : "addMovie"
     }
-  
+
+    
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'index.php');//trying to globalize the action between FB and GMAIL
+    xhr.open('POST', 'index.php?action=addMovie');//trying to globalize the action between FB and GMAIL
     xhr.onreadystatechange = function() { //폴백
             if (xhr.readyState == 4 && xhr.status == 200) {
               //todo
               console.log(xhr.responseText);
-              let obj = JSON.parse(xhr.responseText);
+              // let obj = JSON.parse(xhr.responseText);
               
             }
     }
@@ -74,4 +81,4 @@ fetch(`https://api.themoviedb.org/3/search/movie?api_key=a7a2be31391543b1180047c
   })
   }
 
-  
+ 

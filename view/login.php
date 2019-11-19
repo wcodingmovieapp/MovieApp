@@ -22,6 +22,19 @@
         <div id='normalLogin'>
             <!-- Steve -->
           <!-- Note to Nanee: Delete below test form when pull Steve's code here -->
+          <?php
+           if(isset ($_REQUEST['errors']) AND $_REQUEST['errors'] == true) {
+               if($_REQUEST['errors'] == "success") {
+                echo "
+                <div id='successSubscribe'>
+                    <span>Thank you for subscribing. Please Log in now </span>
+                </div> ";
+               } else {
+                $errors = (array) json_decode($_REQUEST['errors']);
+               }
+              
+           }
+        ?>
           <form name="myForm" id="myForm" method="POST" action="./index.php?action=viewProfile">
             <label>Username: <input name="username" id="username" type="text"/></label><br></br>
             <label>Password: <input name="password" id="password" type="password"/></label><br></br>
@@ -61,7 +74,46 @@
 
     <section id='signUp'>
         <!-- Charlie -->
+        <form  action="index.php?action=subscribeUser" method="POST" id="registration">
+            <label for="username">Username: </label><input type="text" id="username" placeholder="Your Username" name="username" autocomplete="off" ><br>
+                <?php
+                    if (isset($errors['user_required'])) {
+                        echo "User required";
+                    } elseif(isset($errors['used'])) {
+                        echo "User already used";
+                    }
+                ?>
+            <br>
+            <label for="email">Email: </label><input type="text" id="email" placeholder="Your Email" name="email" autocomplete="off" ><br>
+                <?php
+                    if (isset($errors['email_required'])) {
+                        echo "Email required";
+                    } elseif(isset($errors['email_invalid'])) {
+                        echo "Email invalid";
+                    }
+                ?>
+            <br>
+            <label for="password">Password: </label><input type="password" id="password" placeholder="Your Password" name="password" autocomplete="off"><br><br>
+                <?php
+                    if (isset($errors['password_required'])) {
+                        echo "Password required";
+                    } elseif(isset($errors['password_length'])) {
+                        echo "Password too short";
+                    } elseif(isset($errors["password_character"])) {
+                        echo "Password requirements not met - Lowercase, Uppercase, Digit";
+                    }
+                ?>
+            <br>
+            <label for="confirm">Confirm Password: </label><input type="password" id="confirm" placeholder="Confirm Password" name="confirm" autocomplete="off"><br>
+                <?php
+                    if (isset($errors['pwd_not_match'])) {
+                        echo "Passwords do not match";
+                    }
+                ?>
+            <br>
+            <input type="submit" value="Sign Up!"><br><br>
+        </form>
     </section>
-    <script src="./public/js/OAuth.js"></script>
+    <!-- <script src="./public/js/OAuth.js"></script> -->
   </body>
 </html>

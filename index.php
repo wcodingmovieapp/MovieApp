@@ -7,6 +7,8 @@ try {
     if(isset($bodyArr['action'])) {
         if($bodyArr['action'] == 'login') {
             loginPage();
+        } else if ($bodyArr['action'] == 'subscribeUser'){
+            subscribeUser($bodyArr);
         } else if ($bodyArr['action'] == 'loginUser'){
             if(isset($bodyArr['username']) && isset($bodyArr['password'])) 
             {

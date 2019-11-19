@@ -61,7 +61,7 @@ class ManageUser extends Manager {
     } 
 
     function viewProfile($params) {
-        
+
         $bdd = $this->dbConnect();
         $user = false;
         if(isset($params['userId'])) {
@@ -83,6 +83,73 @@ class ManageUser extends Manager {
             }
         }
         return $user;
+
+    }
+
+    function subscribeUser($params) {
+        // Setting global variables for inputs to empty (prep for errors)
+        $userErr = $emailErr = $passwordErr = "";
+        $db = $this->dbConnect();
+
+        // Get form info
+        if (isset($params['username']) && isset($params['email']) && isset($params['password']) && isset($params['confirm'])) {
+            $pwd = $params['password'];
+            $confirm = $params['confirm'];
+            $errors=[];
+        
+            if (empty($params['username'])) {
+                $errors["username_required"] = "true";
+            } else {
+                $username = addslashes(htmlspecialchars(htmlentities(trim($params['username']))));
+                if($this->verifyUser($username)){
+                    $errors["used"] =  "true";
+                }
+            }
+            if (empty($params['email'])) {
+                $errors["email_required"] =  "true";
+            } else {
+                $email = addslashes(htmlspecialchars(htmlentities(trim($params['email']))));
+                // check if email is well formed
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $errors["email_invalid"] =  "true";
+                }
+            }
+            if (empty($params['password'])) {
+                $errors["password_required"] = "true";
+            } else {
+                // Password Length 
+                if(strlen($params['password']) <= 8) {
+                    $errors["password_length"] = "true";
+                }
+                // REGEX 
+                $regex = "#(?=.*\d)(?=.*[a-z])(?=.*[A-Z])#";
+                if (!preg_match($regex, $params['password'])) {
+                    $errors["password_character"] = "true";
+                }
+
+                // Passwords matches 
+                // checking if matching passwords
+                if ($pwd != $confirm) {
+                    $errors["pwd_not_match"] =  "true";
+                } 
+                
+            }
+
+            if(count($errors)>0) {
+               return $errors;
+                // header("Location:index.php?action=login&errors=$str_errors");
+            } else {
+                // Hash of the password
+                $pass_hache = password_hash($params['password'], PASSWORD_DEFAULT); 
+                $req = $db->prepare('INSERT INTO users(username, password, email, normal) VALUES(:username, :password, :email, 1)');
+                $req->execute(array(
+                    'username' => $username,
+                    'password' => $pass_hache,
+                    'email'=> $email
+                ));
+                return "success";
+            }
+        }
 
     }
 

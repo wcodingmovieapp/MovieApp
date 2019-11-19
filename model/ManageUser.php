@@ -43,16 +43,16 @@ class ManageUser extends Manager {
         } else { //normal case check
                 $userId = $this->verifyUser($username);
                 if (!$userId) {
-                    // user creation
-                    $bdd = $this->dbConnect();
-                    $query = "INSERT INTO users(username, password, email, imageurl, normal) VALUES(:username, :password, :email, :imageurl, 1)";
-                    $req = $bdd->prepare($query);
-                    $req->execute(array(
-                        'username' => $username,
-                        'password' => $password,
-                        'email' => $email,
-                        'imageurl' => $imageurl,
-                    ));
+                    // user creation -- Add Charlie's code here
+                    // $bdd = $this->dbConnect();
+                    // $query = "INSERT INTO users(username, password, email, imageurl, normal) VALUES(:username, :password, :email, :imageurl, 1)";
+                    // $req = $bdd->prepare($query);
+                    // $req->execute(array(
+                    //     'username' => $username,
+                    //     'password' => password_hash($password, PASSWORD_DEFAULT),
+                    //     'email' => $email,
+                    //     'imageurl' => $imageurl,
+                    // ));
                     //get user id
                     $userId = $this->verifyUser($username);
                 }
@@ -61,7 +61,7 @@ class ManageUser extends Manager {
     } 
 
     function viewProfile($params) {
-
+        
         $bdd = $this->dbConnect();
         $user = false;
         if(isset($params['userId'])) {
@@ -74,7 +74,8 @@ class ManageUser extends Manager {
         } else {
             if(isset($params['username']) && isset($params['password'])) {
                 $req = $bdd->prepare("SELECT * FROM users WHERE username = :username");
-                // Need to add the password verify here
+                // Need to add the password verify here: SEE CHARLIE'S CODE
+                
                 $req->execute(array(
                     'username' => $params['username'],
                 ));

@@ -12,7 +12,7 @@ try {
             {
                 if(!empty($bodyArr['socialM'])){
                    loginUser($bodyArr);
-                } else{
+                } else {
                     throw new Exception('Error: problem with login');
                 }
             }

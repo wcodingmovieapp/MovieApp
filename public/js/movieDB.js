@@ -1,10 +1,11 @@
-let userQuery = "nightmare on elm street";
+let userQuery = "rush hour 2";
 let movieId = "";
 let movieTitle = "";
 let movieReleaseDate = "";
 let movieDirector = "";
 let movieActors = "";
 let moviePoster = "http://image.tmdb.org/t/p/w185/"
+
 
 
 
@@ -19,15 +20,13 @@ fetch(`https://api.themoviedb.org/3/search/movie?api_key=a7a2be31391543b1180047c
     movieReleaseDate = data.results[0].release_date;
     moviePoster += data.results[0].poster_path;
     movieSearch();
-    console.log(data)
-    console.log(movieTitle);
-    console.log(movieReleaseDate);
-    console.log(moviePoster);
 
   })
   .catch(err => {
     // Do something for an error here
   })
+
+
 
   function movieSearch() {
   fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=a7a2be31391543b1180047cd25bd3045`)
@@ -39,18 +38,40 @@ fetch(`https://api.themoviedb.org/3/search/movie?api_key=a7a2be31391543b1180047c
     for (let i = 0; i < data.crew.length; i++){
         if (data.crew[i].job === "Director") {
             movieDirector = data.crew[i].name;
-            console.log(movieDirector)
         }
     } 
     for (let i = 0; i < data.cast.length; i++){
         movieActors = data.cast[0].name + " " + data.cast[1].name + " " + data.cast[2].name;
-        console.log(movieActors);
     }
-    
+
+    movieData = {
+      "movieId": movieId,
+      "title": movieTitle,
+      "releaseDate": movieReleaseDate,
+      "director": movieDirector,
+      "actors": movieActors,
+      "poster": moviePoster,
+      "action" : "addMovie"
+    }
+  
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'index.php');//trying to globalize the action between FB and GMAIL
+    xhr.onreadystatechange = function() { //폴백
+            if (xhr.readyState == 4 && xhr.status == 200) {
+              //todo
+              console.log(xhr.responseText);
+              let obj = JSON.parse(xhr.responseText);
+              
+            }
+    }
+    xhr.send(JSON.stringify(movieData));
+
+
   })
   .catch(err => {
     // Do something for an error here
   })
   }
 
-
+  

@@ -17,7 +17,7 @@ class  ManagerMovie extends Manager {
          'user_id' => 1, 
          'ranking' => 1
            ));
-     echo json_encode(loadUserMovies($userId));
+    //  echo json_encode(loadUserMovies($userId));
    }
 
    function loadUserMovies($userId){

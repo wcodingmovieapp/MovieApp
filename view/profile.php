@@ -45,7 +45,7 @@ body{
 <input name="submit2" type="submit" id="submit2" value="logout">
 </label>
 </form>
-<h1>James</h1>
+<h1><?=$user['username']?></h1>
 <!-- <p>at button James404NotFound</p> -->
 </div>
 
@@ -62,6 +62,6 @@ body{
 <input type="text" name="title" id="title" />
 <input type="submit" name="submit" value="search" onclick="fetchData()" />
 
-<script src="../public/js/movieDB.js"></script>
+<script src="./public/js/movieDB.js"></script>
 </body>
 </html>

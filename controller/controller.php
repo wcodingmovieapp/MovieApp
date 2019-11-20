@@ -1,5 +1,5 @@
 <?php 
-require_once('./model/ManagerUser.php');
+require_once('./model/ManageUser.php');
 require_once('./model/ManagerMovie.php');
 
 function loginPage() {

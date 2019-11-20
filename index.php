@@ -24,6 +24,8 @@ try {
             } else {
                 throw new Exception('Error: user not found');
             }
+        } else if ($bodyArr['action'] == 'addMovie') {
+                addMovie($bodyArr);
         }
     }
     else {

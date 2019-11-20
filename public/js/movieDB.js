@@ -64,7 +64,7 @@ function fetchData(e) {
     }
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '../index.php');//trying to globalize the action between FB and GMAIL
+    xhr.open('POST', 'index.php?action=addMovie');//trying to globalize the action between FB and GMAIL
     xhr.onreadystatechange = function() { //폴백
             if (xhr.readyState == 4 && xhr.status == 200) {
               //todo

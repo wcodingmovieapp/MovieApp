@@ -7,12 +7,18 @@ function loginPage() {
 // insert or connect the user
 function loginUser($params){
     $manageUser = new ManageUser();
-    $manageUser->loginUser($params);
+    $userId = $manageUser->loginUser($params);
+    if(isset($params['ajax'])) {
+        echo $userId;
+    } else if (isset($_SESSION['userId'])) {
+        echo $_SESSION['userId'];
+        header('Location: index.php?action=viewProfile');
+    } else throw new Exception("Problem with login"); //or redirect to login pg and show message
 }
 
-function viewProfile($params) {
+function viewProfile($userId) {
     $manageUser = new ManageUser();
-    $user = $manageUser->viewProfile($params);
+    $user = $manageUser->getProfileUserData($userId);
     require("./view/profile.php");
 }
 function subscribeUser($params) {
@@ -25,4 +31,11 @@ function subscribeUser($params) {
         $location.="errors=success";
     }
     header($location);
+}
+
+function logoutUser() {
+    $_SESSION = [];
+    session_destroy();
+    header('Location: index.php');
+
 }

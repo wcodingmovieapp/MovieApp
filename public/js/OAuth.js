@@ -9,14 +9,14 @@
 
 function onSignIn(googleUser) {
   //get profile info
-
+  console.log(googleUser);
   var profile = googleUser.getBasicProfile();
 
   //get user token
   // var id_token = googleUser.getAuthResponse().id_token;
 
   //get user data
-  var profileData = {
+  var data = {
     // access_token: id_token,
     google_id: profile.getId(),
     username: profile.getGivenName(),
@@ -24,7 +24,8 @@ function onSignIn(googleUser) {
     imageurl: profile.getImageUrl(),
     email: profile.getEmail(),
     socialM: "gmail",
-    action: "loginUser"
+    action: "loginUser",
+    ajax: true
   };
 
   //trigger ajax on successful sign-in
@@ -34,14 +35,13 @@ function onSignIn(googleUser) {
   xhr.onload = function() {
     if (xhr.status === 200) {
       console.log("Signed in as: " + xhr.responseText);
-      window.location.href =
-        "index.php?action=viewProfile&userId=" + xhr.responseText;
+      window.location.href = "index.php?action=viewProfile";
     }
   };
 
-  xhr.send(JSON.stringify(profileData));
+  xhr.send(JSON.stringify(data));
 
-  //on google auth failure
+  // on google auth failure
   // function onFailure(error) {
   //   //change to throw exception later
   //   console.log(error);
@@ -56,6 +56,14 @@ function onSignIn(googleUser) {
 function signOut() {
   var auth2 = gapi.auth2.getAuthInstance();
   auth2.signOut().then(function() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "index.php?action=logoutUser");
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        window.location.href = "index.php";
+      }
+    };
+    xhr.send();
     console.log("User signed out.");
   });
 }

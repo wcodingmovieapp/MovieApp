@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -35,9 +37,9 @@
               
            }
         ?>
-          <form name="myForm" id="myForm" method="POST" action="./index.php?action=viewProfile">
-            <label>Username: <input name="username" id="username" type="text"/></label><br></br>
-            <label>Password: <input name="password" id="password" type="password"/></label><br></br>
+          <form name="myForm" id="myForm" method="POST" action="./index.php?action=loginUser">
+            <label>Username: <input name="username" id="loginusername" type="text"/></label><br></br>
+            <label>Password: <input name="password" id="loginpassword" type="password"/></label><br></br>
             <button name="submit" id="submit" type="submit">Login</button>
           </form>
         </div>
@@ -114,6 +116,6 @@
             <input type="submit" value="Sign Up!"><br><br>
         </form>
     </section>
-    <!-- <script src="./public/js/OAuth.js"></script> -->
+    <script src="./public/js/OAuth.js"></script>
   </body>
 </html>

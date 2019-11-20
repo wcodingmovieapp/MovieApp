@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +35,10 @@ body{
          }
 
 </style>
-
+<?php
+ echo "profile.php";
+        print_r($user);
+        ?>
 <div class="header">
 <form align="right" name="logout" method="post" action="log_out.php" style="black">
 <label class="logoutLblPos">

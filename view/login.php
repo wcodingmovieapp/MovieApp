@@ -31,6 +31,11 @@
     <section id='signUp'>
         <!-- Charlie -->
     </section>
+    <section id='input'>
+    <input type="text" id="title" name="title" onkeypress="if(event.keyCode==13){searchMovie(); return false;}" />
+
+    </section>
     <script src="./public/js/OAuth.js"></script>
+    <script src="./public/js/movieDB.js"></script>
   </body>
 </html>

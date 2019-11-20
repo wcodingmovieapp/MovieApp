@@ -55,10 +55,10 @@ body{
 
 </div>
 
-<form action="test.php" method="post">
+
 <input type="text" name="title" id="title" />
 <input type="submit" name="submit" value="search" onclick="fetchData()" />
-</form>
+
 <script src="../public/js/movieDB.js"></script>
 </body>
 </html>

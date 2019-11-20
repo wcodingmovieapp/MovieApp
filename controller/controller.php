@@ -9,7 +9,11 @@ function loginPage() {
 function loadProfile($postParams){
     $username = htmlspecialchars($postParams['username']);
     $password = htmlspecialchars($postParams['password']);
-    verifyUser($username, $password);
+    $userId = 1;
+    loadUserMovies($userId);
+    // $dataUser = verifyUser($username, $password);
+    // loadUserMovies($dataUser['userId'])
+
     require("./view/profile.php");
 }
 

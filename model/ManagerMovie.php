@@ -6,9 +6,16 @@ class  ManagerMovie extends Manager {
 
         print_r($params);
        $db = $this->dbConnect(); //connect DB
-       $req = $db->prepare('INSERT INTO Movie(title, poster, director, actors, release_date, movie_id, user_id, ranking) VALUES(:name, :email, :facebook)');
+       $req = $db->prepare('INSERT INTO Movie(title, poster, director, actors, release_date, movie_id, user_id, ranking) VALUES(:title, :poster, :director, :actors, :release_date, :movie_id, :user_id, :ranking)');
        $req->execute(array(
-               'email' => $params['email']
+         'title' => $params['title'], 
+         'poster' => $params['poster'], 
+         'director' => $params['director'], 
+         'actors' => $params['actors'], 
+         'release_date' => $params['releaseDate'], 
+         'movie_id' => $params['movieId'], 
+         'user_id' => 1, 
+         'ranking' => 1
            ));
      echo json_encode(loadUserMovies($userId));
    }
@@ -19,6 +26,11 @@ class  ManagerMovie extends Manager {
        $req->execute(array(
                'user_id' => $userId
            ));
+        echo '<ul>';
+        while($data = $req->fetch()) {
+          echo '<li>'.$data['title'].'</li>';
+        }
+        echo '</ul>';
 
     return $req;
    }

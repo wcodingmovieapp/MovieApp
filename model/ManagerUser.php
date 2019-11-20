@@ -3,7 +3,7 @@ require_once('model/Manager.php');
 class manageUser extends Manager {
     function verifyUser($username, $password) {
         $bdd = $this->dbConnect();
-        $req = $bdd->prepare("SELECT username, password FROM users WHERE username = :username AND password = :password");
+        $req = $bdd->prepare("SELECT * FROM users WHERE username = :username AND password = :password");
         $req->execute(array(
             'username' => $username,
             'password' => $password
@@ -15,5 +15,7 @@ class manageUser extends Manager {
         } else {
             header('Location: profile.php');
         }
+
+        return $req;
     }
 }

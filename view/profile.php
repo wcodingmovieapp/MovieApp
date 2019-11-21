@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+            name="google-signin-client_id"
+            content="856185366006-bbrto3am0gcfgd0qgrsodl6scame43ma.apps.googleusercontent.com"
+            />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Profile Wireframe</title>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 <style>
@@ -68,32 +74,30 @@ body{
     </form>
     <h1><?=$user['username']?></h1>
 </div>
+<a href="#" onclick="signOut();">Sign out</a>
+        <div class="g-signin2" type="hidden"></div>
+        <script src="./public/js/OAuth.js"></script>
 
-<?php print_r($dataMovie); ?>
-<di<div id="content" style="background-color: powderblue;">
-    <div id="card0" class="cards" style="background-color:yellow;">
-         <div id="poster1" class="posters" style="background-color:green;">
-            <img src="<?php echo $dataMovie[0]['poster']?>">
-        </div>
-        <div id="info1" class="movieInfo" style="background-color: white;">
-            <p>Title: <?=$dataMovie[0]['title'];?></p>
-            <p>Director: <?=$dataMovie[0]['director'];?></p>
-            <p>Actors: <?=$dataMovie[0]['actors'];?></p>
-        </div>
-    </div>
-    <?php
+<?php
         $noMovies = 3;
         $divCard='<div id="card';//[ex]'<div id="card
         $classCard='class="cards">';//[ex]'<div id="card0" class="cards">
-        $divPoster='';
-            for($id=0; $id<$noMovies; $id++){
-                // echo $divCard.'"'$id.$classCard.
+        $divPoster=' <div id="poster';
+        $classPoster='class="posters">';
+        $tagImg = ' <img src="';
+        $divInfo='<div id="info';
+        $classInfo='class="movieInfo">';
+        $tagTitle='<h3>Title: ';
+        $tagDirector='<h3>Director: ';
+        $tagActors='<h3>Actors: ';
+            for($id=0; $id<3; $id++){
+                echo
+                $divCard.$id.'"'.$classCard.$divPoster.$id.'"'.$classPoster.$tagImg.$dataMovie[$id]['poster'].'"></div>'.$divInfo.$id.'"'.$classInfo.$tagTitle.$dataMovie[$id]['title'].'</h3>'.$tagDirector.$dataMovie[$id]['director'].'</h3>'.$tagActors.$dataMovie[$id]['actors'].'</h3></div></div>';
             }
-    ?>
-
-
-
-        <script src="./public/js/movieDB.js"></script>
+?>
+<input type="text" name="title" id="title" />
+<input type="submit" name="submit" value="search" onclick="fetchData('<?=$user['id']?>' )" />
+<script src="./public/js/movieDB.js"></script>
     </body>
 </html>
 

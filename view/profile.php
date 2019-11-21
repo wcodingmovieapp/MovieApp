@@ -79,7 +79,7 @@ body{
         <script src="./public/js/OAuth.js"></script>
 
 <?php
-        $noMovies = 3;
+        $noMovies = count($dataMovie);
         $divCard='<div id="card';//[ex]'<div id="card
         $classCard='class="cards">';//[ex]'<div id="card0" class="cards">
         $divPoster=' <div id="poster';
@@ -90,7 +90,7 @@ body{
         $tagTitle='<h3>Title: ';
         $tagDirector='<h3>Director: ';
         $tagActors='<h3>Actors: ';
-            for($id=0; $id<3; $id++){
+            for($id=0; $id<$noMovies; $id++){
                 echo
                 $divCard.$id.'"'.$classCard.$divPoster.$id.'"'.$classPoster.$tagImg.$dataMovie[$id]['poster'].'"></div>'.$divInfo.$id.'"'.$classInfo.$tagTitle.$dataMovie[$id]['title'].'</h3>'.$tagDirector.$dataMovie[$id]['director'].'</h3>'.$tagActors.$dataMovie[$id]['actors'].'</h3></div></div>';
             }

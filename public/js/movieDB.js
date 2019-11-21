@@ -64,6 +64,31 @@ function searchMovie(userId) {
       xhr.onreadystatechange = function() {
         //폴백
         if (xhr.readyState == 4 && xhr.status == 200) {
+          // //todc
+          // const listMovies = JSON.parse(xhr.responseText);
+
+          console.log();
+          // let obj = JSON.parse(xhr.responseText);
+        }
+      };
+      xhr.send(JSON.stringify(movieData));
+
+      let movieData = {
+        movieId: movieId,
+        title: movieTitle,
+        releaseDate: movieReleaseDate,
+        director: movieDirector,
+        actors: movieActors,
+        poster: moviePoster,
+        action: "addMovie",
+        userId: userId
+      };
+
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "index.php"); //trying to globalize the action between FB and GMAIL
+      xhr.onreadystatechange = function() {
+        //폴백
+        if (xhr.readyState == 4 && xhr.status == 200) {
           //todc
           const listMovies = JSON.parse(xhr.responseText);
 

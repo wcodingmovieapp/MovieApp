@@ -49,15 +49,8 @@
                 margin:  0;
                 padding: 30px 5%;
             }
-
-            /*This is the page content, I think? */
-            .content {
-                padding:22px;
-                text-align: center;
-                background-color: grey;
-                min-height: 100vh;
-            }
-        </style>
+            </style>
+        
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <link rel="stylesheet" href="../styles/style.css">
     </head>
@@ -71,26 +64,27 @@
             <h1><?=$user['username']?></h1>
         </div>
         <a href="#" onclick="signOut();">Sign out</a>
-                <div class="g-signin2" type="hidden"></div>
-                <script src="./public/js/OAuth.js"></script>
-
+        <div class="g-signin2" type="hidden"></div>
+        <script src="./public/js/OAuth.js"></script>
+        
         <?php
-                $noMovies = 3;
-                $divCard='<div id="card';//[ex]'<div id="card
-                $classCard='class="cards">';//[ex]'<div id="card0" class="cards">
-                $divPoster=' <div id="poster';
-                $classPoster='class="posters">';
-                $tagImg = ' <img src="';
-                $divInfo='<div id="info';
-                $classInfo='class="movieInfo">';
-                $tagTitle='<h3>Title: ';
-                $tagDirector='<h3>Director: ';
-                $tagActors='<h3>Actors: ';
-                    for($id=0; $id<3; $id++){
-                        echo
-                        $divCard.$id.'"'.$classCard.$divPoster.$id.'"'.$classPoster.$tagImg.$dataMovie[$id]['poster'].'"></div>'.$divInfo.$id.'"'.$classInfo.$tagTitle.$dataMovie[$id]['title'].'</h3>'.$tagDirector.$dataMovie[$id]['director'].'</h3>'.$tagActors.$dataMovie[$id]['actors'].'</h3></div></div>';
-                    }
+        $noMovies = count($dataMovie);
+        $divCard='<div id="card';//[ex]'<div id="card
+        $classCard='class="cards">';//[ex]'<div id="card0" class="cards">
+        $divPoster=' <div id="poster';
+        $classPoster='class="posters">';
+        $tagImg = ' <img src="';
+        $divInfo='<div id="info';
+        $classInfo='class="movieInfo">';
+        $tagTitle='<h3>Title: ';
+        $tagDirector='<h3>Director: ';
+        $tagActors='<h3>Actors: ';
+            for($id=0; $id<$noMovies; $id++){
+                echo
+                $divCard.$id.'"'.$classCard.$divPoster.$id.'"'.$classPoster.$tagImg.$dataMovie[$id]['poster'].'"></div>'.$divInfo.$id.'"'.$classInfo.$tagTitle.$dataMovie[$id]['title'].'</h3>'.$tagDirector.$dataMovie[$id]['director'].'</h3>'.$tagActors.$dataMovie[$id]['actors'].'</h3></div></div>';
+            }
         ?>
+
         <input type="text" name="title" id="title" />
         <input type="submit" name="submit" value="search" onclick="fetchData('<?=$user['id']?>' )" />
         <script src="./public/js/movieDB.js"></script>
@@ -98,3 +92,4 @@
 </html>
 
 
+            

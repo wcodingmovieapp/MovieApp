@@ -118,6 +118,7 @@
             <input type="submit" value="Sign Up!"><br><br>
         </form>
     </section>
-    <script src="./validation.js"></script>
+    <script src="./public/js/OAuth.js"></script>
+    <script src="./public/js/validation.js"></script>
   </body>
 </html>

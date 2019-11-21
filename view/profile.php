@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Profile Wireframe</title>
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
-<body>
-
 <style>
-/*Body stuff, I think? */
+#content {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+}
+
+
+.cards {
+    display: flex;
+    margin: auto;
+    width: 30%;
+    justify-content: center;
+    padding: 2%;
+}
+
+.movieInfo {
+    padding: 5%;
+}
+
+
+
+
 body{
     font-family: Arial;
     margin: 0;
@@ -22,38 +43,67 @@ body{
     background-color: black;
     color: white;
     font-size: 25px;
-    width: 90%; //changed from 100%
+    width: 90%; 
     margin:  0;
-    padding: 30px 5%; //30px padding vertically, 5% horizontally (5% on left and right side)
+    padding: 30px 5%;
 }
 
 /*This is the page content, I think? */
-.content {padding:22px;
-         text-align: center;
-         background-color: grey;
-         min-height: 100vh;
-         }
-
+.content {
+    padding:22px;
+    text-align: center;
+    background-color: grey;
+    min-height: 100vh;
+}
 </style>
+<body>
+
+
 
 <div class="header">
-<form align="right" name="logout" method="post" action="log_out.php" style="black">
-<label class="logoutLblPos">
-<input name="submit2" type="submit" id="submit2" value="logout">
-</label>
-</form>
-<h1><?=$user['username']?></h1>
-<!-- <p>at button James404NotFound</p> -->
+    <form align="right" name="logout" method="post" action="log_out.php" style="black">
+        <label class="logoutLblPos">
+            <input name="submit2" type="submit" id="submit2" value="logout">
+        </label>
+    </form>
+    <h1><?=$user['username']?></h1>
 </div>
 
-<div class="content">
-<div class="choice" draggable="true"><p> Chungking Express </p></div>
-<div class="choice" draggable="true"><p> Chungking Mansions </p></div>
-<div class="choice" draggable="true"><p> Mansions Express </p></div>
-<div class="choice" draggable="true"><p> Express Mansions </p></div>
-<div class="choice" draggable="true"><p> Chungking Chungking </p></div>
-
+<?php print_r($dataMovie); ?>
+<div id="content" style="background-color: powderblue;">
+    <div id="card1" class="cards" style="background-color:yellow;">
+         <div id="poster1" class="posters" style="background-color:green;">
+            <img src="<?=$dataMovie[0]['poster']?>"/>
+        </div>
+        <div id="info1" class="movieInfo" style="background-color: white;">
+            <h3><?=$dataMovie[0]['title']; ?></h3>
+            <h3><?=$dataMovie[0]['director']; ?></h3>
+            <h3><?=$dataMovie[0]['actors']; ?></h3>
+        </div>
+    </div>
+    <div id="card1" class="cards" style="background-color:yellow;">
+         <div id="poster1" class="posters" style="background-color:green;">
+            <img src="<?=$dataMovie[0]['poster']?>"/>
+        </div>
+        <div id="info1" class="movieInfo" style="background-color: white;">
+            <h3><?=$dataMovie[0]['title']; ?></h3>
+            <h3><?=$dataMovie[0]['director']; ?></h3>
+            <h3><?=$dataMovie[0]['actors']; ?></h3>
+        </div>
+    </div>
+    <div id="card1" class="cards" style="background-color:yellow;">
+         <div id="poster1" class="posters" style="background-color:green;">
+            <img src="<?=$dataMovie[0]['poster']?>"/>
+        </div>
+        <div id="info1" class="movieInfo" style="background-color: white;">
+            <h3><?=$dataMovie[0]['title']; ?></h3>
+            <h3><?=$dataMovie[0]['director']; ?></h3>
+            <h3><?=$dataMovie[0]['actors']; ?></h3>
+        </div>
+    </div>
 </div>
+
+
 
 
 <input type="text" name="title" id="title" />

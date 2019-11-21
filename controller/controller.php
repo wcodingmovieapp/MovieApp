@@ -1,5 +1,5 @@
 <?php 
-require_once('./model/ManageUser.php');
+require_once('./model/ManagerUser.php');
 require_once('./model/ManagerMovie.php');
 
 function loginPage() {
@@ -7,9 +7,23 @@ function loginPage() {
 }
 // insert or connect the user
 function loginUser($params){
-    $manageUser = new ManageUser();
-    $manageUser->loginUser($params);
+    $managerUser = new ManagerUser();
+    $userId = $managerUser->loginUser($params);
+    if(isset($params['ajax'])) {
+        echo $userId;
+    } else if (isset($_SESSION['userId'])) {
+        echo $_SESSION['userId'];
+        header('Location: index.php?action=viewProfile');
+    } else throw new Exception("Problem with login"); //or redirect to login pg and show message
 }
+
+function viewProfile($userId) {
+    $managerUser = new ManagerUser();
+    $user = $managerUser->getProfileUserData($userId);
+    $managerMovie = new ManagerMovie();
+    $dataMovie= $managerMovie->loadMovies($user['id']);
+    require("./view/profile.php");
+
 
 function loadProfile($postParams){
     $username = htmlspecialchars($postParams['username']);
@@ -29,17 +43,9 @@ function addMovie($params) {
     echo json_encode($listMovies);
 }
 
-function viewProfile($params) {
-    $manageUser = new ManageUser();
-    $managerMovie = new ManagerMovie();
-    $user = $manageUser->viewProfile($params);
-    $dataMovie= $managerMovie->loadMovies($user['id']);
-    require("./view/profile.php");
-}
-
 function subscribeUser($params) {
-    $manageUser = new ManageUser();
-    $errors = $manageUser->subscribeUser($params);
+    $managerUser = new ManagerUser();
+    $errors = $managerUser->subscribeUser($params);
     $location = "Location:index.php?action=login&";
     if($errors !== "success") {
         $location.="errors=".json_encode($errors);
@@ -47,4 +53,11 @@ function subscribeUser($params) {
         $location.="errors=success";
     }
     header($location);
+}
+
+function logoutUser() {
+    $_SESSION = [];
+    session_destroy();
+    header('Location: index.php');
+
 }

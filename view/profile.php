@@ -93,10 +93,8 @@ body{
 
 
 
-
-<input type="text" name="title" id="title" />
-<input type="submit" name="submit" value="search" onclick="fetchData('<?=$user['id']?>' )" />
-
-<script src="./public/js/movieDB.js"></script>
-</body>
+        <script src="./public/js/movieDB.js"></script>
+    </body>
 </html>
+
+

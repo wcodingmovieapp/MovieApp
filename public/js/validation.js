@@ -146,5 +146,4 @@ check['confirm'] = function() {
 
 
 // Now that everything is initialized, we can disable the "tooltips"
-
 desactivateTooltips();

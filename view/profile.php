@@ -70,38 +70,26 @@ body{
 </div>
 
 <?php print_r($dataMovie); ?>
-<div id="content" style="background-color: powderblue;">
-    <div id="card1" class="cards" style="background-color:yellow;">
+<di<div id="content" style="background-color: powderblue;">
+    <div id="card0" class="cards" style="background-color:yellow;">
          <div id="poster1" class="posters" style="background-color:green;">
-            <img src="<?=$dataMovie[0]['poster']?>"/>
+            <img src="<?php echo $dataMovie[0]['poster']?>">
         </div>
         <div id="info1" class="movieInfo" style="background-color: white;">
-            <h3><?=$dataMovie[0]['title']; ?></h3>
-            <h3><?=$dataMovie[0]['director']; ?></h3>
-            <h3><?=$dataMovie[0]['actors']; ?></h3>
+            <p>Title: <?=$dataMovie[0]['title'];?></p>
+            <p>Director: <?=$dataMovie[0]['director'];?></p>
+            <p>Actors: <?=$dataMovie[0]['actors'];?></p>
         </div>
     </div>
-    <div id="card1" class="cards" style="background-color:yellow;">
-         <div id="poster1" class="posters" style="background-color:green;">
-            <img src="<?=$dataMovie[0]['poster']?>"/>
-        </div>
-        <div id="info1" class="movieInfo" style="background-color: white;">
-            <h3><?=$dataMovie[0]['title']; ?></h3>
-            <h3><?=$dataMovie[0]['director']; ?></h3>
-            <h3><?=$dataMovie[0]['actors']; ?></h3>
-        </div>
-    </div>
-    <div id="card1" class="cards" style="background-color:yellow;">
-         <div id="poster1" class="posters" style="background-color:green;">
-            <img src="<?=$dataMovie[0]['poster']?>"/>
-        </div>
-        <div id="info1" class="movieInfo" style="background-color: white;">
-            <h3><?=$dataMovie[0]['title']; ?></h3>
-            <h3><?=$dataMovie[0]['director']; ?></h3>
-            <h3><?=$dataMovie[0]['actors']; ?></h3>
-        </div>
-    </div>
-</div>
+    <?php
+        $noMovies = 3;
+        $divCard='<div id="card';//[ex]'<div id="card
+        $classCard='class="cards">';//[ex]'<div id="card0" class="cards">
+        $divPoster='';
+            for($id=0; $id<$noMovies; $id++){
+                // echo $divCard.'"'$id.$classCard.
+            }
+    ?>
 
 
 

@@ -29,7 +29,7 @@
                if($_REQUEST['errors'] == "success") {
                 echo "
                 <div id='successSubscribe'>
-                    <span>Thank you for subscribing. Please Log in now </span>
+                    <span>Thank you for subscribing. Please log in now </span>
                 </div> ";
                } else {
                 $errors = (array) json_decode($_REQUEST['errors']);

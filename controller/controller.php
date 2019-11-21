@@ -25,13 +25,15 @@ function loadProfile($postParams){
 function addMovie($params) {
     //$params <== $bodyArr <== movieData of movieDB.js
     $managerMovie = new ManagerMovie ();
-    $managerMovie->addMovies($params);
-
+    $listMovies = $managerMovie->addMovies($params);
+    echo json_encode($listMovies);
 }
 
 function viewProfile($params) {
     $manageUser = new ManageUser();
+    $managerMovie = new ManagerMovie();
     $user = $manageUser->viewProfile($params);
+    $dataMovie= $managerMovie->loadMovies($user['id']);
     require("./view/profile.php");
 }
 

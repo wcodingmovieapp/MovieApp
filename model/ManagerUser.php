@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 require_once('model/Manager.php');
 class manageUser extends Manager {
     function verifyUser($username, $password) {
@@ -18,4 +18,4 @@ class manageUser extends Manager {
 
         return $req;
     }
-}
+} -->

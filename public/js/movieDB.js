@@ -7,8 +7,7 @@ let movieDirector = "";
 let movieActors = "";
 let moviePoster = "http://image.tmdb.org/t/p/w185/"
 
-function fetchData(e) {
-  
+function fetchData(user_id) {
   let movie = userQuery.value;
   fetch(`https://api.themoviedb.org/3/search/movie?api_key=a7a2be31391543b1180047cd25bd3045&language=en-US&query=${movie}`)
   .then(response => {
@@ -21,7 +20,7 @@ function fetchData(e) {
     movieTitle = data.results[0].title;
     movieReleaseDate = data.results[0].release_date;
     moviePoster += data.results[0].poster_path;
-    searchMovie();
+    searchMovie(user_id);
 
   })
   .catch(err => {
@@ -34,7 +33,7 @@ function fetchData(e) {
 
 
 
-  function searchMovie() {
+  function searchMovie(userId) {
 
 
   fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=a7a2be31391543b1180047cd25bd3045`)
@@ -60,15 +59,18 @@ function fetchData(e) {
       "director": movieDirector,
       "actors": movieActors,
       "poster": moviePoster,
-      "action" : "addMovie"
+      "action" : "addMovie",
+      "userId" : userId,
     }
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'index.php?action=addMovie');//trying to globalize the action between FB and GMAIL
+    xhr.open('POST', 'index.php');//trying to globalize the action between FB and GMAIL
     xhr.onreadystatechange = function() { //폴백
             if (xhr.readyState == 4 && xhr.status == 200) {
-              //todo
-              console.log(xhr.responseText);
+              //todc
+              const listMovies = JSON.parse(xhr.responseText);
+              
+              console.log();
               // let obj = JSON.parse(xhr.responseText);
               
             }

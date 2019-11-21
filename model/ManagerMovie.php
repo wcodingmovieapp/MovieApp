@@ -3,8 +3,6 @@ require_once("Manager.php");
 class  ManagerMovie extends Manager {
 
    function addMovies($params){
-
-        print_r($params);
        $db = $this->dbConnect(); //connect DB
        $req = $db->prepare('INSERT INTO Movie(title, poster, director, actors, release_date, movie_id, user_id, ranking) VALUES(:title, :poster, :director, :actors, :release_date, :movie_id, :user_id, :ranking)');
        $req->execute(array(
@@ -14,25 +12,19 @@ class  ManagerMovie extends Manager {
          'actors' => $params['actors'], 
          'release_date' => $params['releaseDate'], 
          'movie_id' => $params['movieId'], 
-         'user_id' => 1, 
+         'user_id' => $params['userId'], 
          'ranking' => 1
            ));
-    //  echo json_encode(loadUserMovies($userId));
+        return $this->loadMovies($params['userId']);
    }
 
-   function loadUserMovies($userId){
-    $db = $this->dbConnect(); //connect DB
-       $req = $db->prepare('SELECT * FROM Users WHERE id = :user_id');
+   function loadMovies($userId){
+       $db = $this->dbConnect(); //connect DB
+       $req = $db->prepare('SELECT * FROM Movie WHERE user_id = :user_id ORDER BY ranking');
        $req->execute(array(
                'user_id' => $userId
            ));
-        echo '<ul>';
-        while($data = $req->fetch()) {
-          echo '<li>'.$data['title'].'</li>';
-        }
-        echo '</ul>';
-
-    return $req;
+        return $req->fetchAll();
    }
    
 }

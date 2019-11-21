@@ -35,10 +35,7 @@ body{
          }
 
 </style>
-<?php
- echo "profile.php";
-        print_r($user);
-        ?>
+
 <div class="header">
 <form align="right" name="logout" method="post" action="log_out.php" style="black">
 <label class="logoutLblPos">
@@ -60,7 +57,7 @@ body{
 
 
 <input type="text" name="title" id="title" />
-<input type="submit" name="submit" value="search" onclick="fetchData()" />
+<input type="submit" name="submit" value="search" onclick="fetchData('<?=$user['id']?>' )" />
 
 <script src="./public/js/movieDB.js"></script>
 </body>

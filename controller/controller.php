@@ -23,7 +23,7 @@ function viewProfile($userId) {
     $managerMovie = new ManagerMovie();
     $dataMovie= $managerMovie->loadMovies($user['id']);
     require("./view/profile.php");
-
+}
 
 function loadProfile($postParams){
     $username = htmlspecialchars($postParams['username']);

@@ -44,11 +44,11 @@
         <div class="g-signin2" type="hidden"></div>
         <script src="./public/js/OAuth.js"></script>
 
-        <form align="right" name="logout" method="post" action="log_out.php" style="black">
+        <!-- <form align="right" name="logout" method="post" action="log_out.php" style="black">
         <label class="logoutLblPos">
         <input name="submit2" type="submit" id="submit2" value="logout">
         </label>
-        </form>
+        </form> -->
         <h1><?=$user['username']?></h1>
         <!-- <p>at button James404NotFound</p> -->
         </div>

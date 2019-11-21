@@ -27,7 +27,7 @@
                if($_REQUEST['errors'] == "success") {
                 echo "
                 <div id='successSubscribe'>
-                    <span>Thank you for subscribing. Please log in now </span>
+                    <span>Thank you for subscribing. Please Log in now </span>
                 </div> ";
                } else {
                 $errors = (array) json_decode($_REQUEST['errors']);
@@ -76,7 +76,7 @@
         <!-- Charlie -->
         <form  action="index.php?action=subscribeUser" method="POST" id="registration">
             <label for="username">Username: </label><input type="text" id="username" placeholder="Your Username" name="username" autocomplete="off" ><br>
-            <span class="tooltip">Username required and must be greater than 5 characters in length.</span>
+            <span class="tooltip">Username required and must be: <br>1) Greater than 5 characters <br> 2) Less than 15 characters</span>
                 <?php
                     if (isset($errors['user_required'])) {
                         echo "User required";
@@ -86,7 +86,7 @@
                 ?>
             <br>
             <label for="email">Email: </label><input type="text" id="email" placeholder="Your Email" name="email" autocomplete="off" ><br>
-            <span class="tooltip">Email required and must be valid email.</span>
+            <span class="tooltip">Email required and must be a valid address.</span>
                 <?php
                     if (isset($errors['email_required'])) {
                         echo "Email required";
@@ -95,8 +95,8 @@
                     }
                 ?>
             <br>
-            <label for="password">Password: </label><input type="password" id="password" placeholder="Your Password" name="password" autocomplete="off"><br><br>
-            <span class="tooltip">The password is required with 8 charachters (at least one uppercase and one lowercase and digit.</span>
+            <label for="password">Password: </label><input type="password" id="password" placeholder="Your Password" name="password" autocomplete="off"><br>
+            <span class="tooltip">The password is required with 8 characters (at least one uppercase and one lowercase and digit).</span>
                 <?php
                     if (isset($errors['password_required'])) {
                         echo "Password required";
@@ -108,7 +108,7 @@
                 ?>
             <br>
             <label for="confirm">Confirm Password: </label><input type="password" id="confirm" placeholder="Confirm Password" name="confirm" autocomplete="off"><br>
-            <span class="tooltip">The password confirmation has to be the same as the original one.</span>
+            <span class="tooltip">Password and Confirm do not match.</span>
                 <?php
                     if (isset($errors['pwd_not_match'])) {
                         echo "Passwords do not match";
@@ -118,7 +118,6 @@
             <input type="submit" value="Sign Up!"><br><br>
         </form>
     </section>
-    <script src="./public/js/OAuth.js"></script>
-    <script src="./public/js/validation.js"></script>
+    <script src="./validation.js"></script>
   </body>
 </html>

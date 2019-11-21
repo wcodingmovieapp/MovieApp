@@ -34,7 +34,7 @@ check['username'] = function(id) {
     var username = document.getElementById(id),
         tooltipStyle = getTooltip(username).style;
 
-    if (username.value.length >= 5) {
+    if (username.value.length >= 5 && username.value.length <= 12) {
         username.className = 'correct';
         tooltipStyle.display = 'none';
         return true;
@@ -46,92 +46,58 @@ check['username'] = function(id) {
 
 };
 
-// check['firstName'] = check['lastName']; // The function for the first name is the same as the name
+check['email'] = function() {
 
-// check['age'] = function() {
+    var mailformat = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var email = document.getElementById('email'),
+        tooltipStyle = getTooltip(email).style;
+    
+    if (email.value.match(mailformat)) {
+        email.className = 'correct';
+        tooltipStyle.display = 'none';
+        return true;
+    } else {
+        email.className = 'incorrect';
+        tooltipStyle.display = 'inline-block';
+        return false;
+    }
 
-//     var age = document.getElementById('age'),
-//         tooltipStyle = getTooltip(age).style,
-//         ageValue = parseInt(age.value);
+};
 
-//     if (!isNaN(ageValue) && ageValue >= 5 && ageValue <= 140) {
-//         age.className = 'correct';
-//         tooltipStyle.display = 'none';
-//         return true;
-//     } else {
-//         age.className = 'incorrect';
-//         tooltipStyle.display = 'inline-block';
-//         return false;
-//     }
+check['password'] = function() {
+    
+    var regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    var password = document.getElementById('password'),
+        tooltipStyle = getTooltip(password).style;
 
-// };
+    if (password.value.length >= 8 && password.value.match(regexPassword)) {
+        password.className = 'correct';
+        tooltipStyle.display = 'none';
+        return true;
+    } else {
+        password.className = 'incorrect';
+        tooltipStyle.display = 'inline-block';
+        return false;
+    }
+};
 
-// check['login'] = function() {
+check['confirm'] = function() {
 
-//     var login = document.getElementById('login'),
-//         tooltipStyle = getTooltip(login).style;
+    var password = document.getElementById('password'),
+        confirm = document.getElementById('confirm'),
+        tooltipStyle = getTooltip(confirm).style;
 
-//     if (login.value.length >= 4) {
-//         login.className = 'correct';
-//         tooltipStyle.display = 'none';
-//         return true;
-//     } else {
-//         login.className = 'incorrect';
-//         tooltipStyle.display = 'inline-block';
-//         return false;
-//     }
+    if (password.value == confirm.value && confirm.value != '') {
+        confirm.className = 'correct';
+        tooltipStyle.display = 'none';
+        return true;
+    } else {
+        confirm.className = 'incorrect';
+        tooltipStyle.display = 'inline-block';
+        return false;
+    }
 
-// };
-
-// check['pwd1'] = function() {
-
-//     var pwd1 = document.getElementById('pwd1'),
-//         tooltipStyle = getTooltip(pwd1).style;
-
-//     if (pwd1.value.length >= 6) {
-//         pwd1.className = 'correct';
-//         tooltipStyle.display = 'none';
-//         return true;
-//     } else {
-//         pwd1.className = 'incorrect';
-//         tooltipStyle.display = 'inline-block';
-//         return false;
-//     }
-
-// };
-
-// check['pwd2'] = function() {
-
-//     var pwd1 = document.getElementById('pwd1'),
-//         pwd2 = document.getElementById('pwd2'),
-//         tooltipStyle = getTooltip(pwd2).style;
-
-//     if (pwd1.value == pwd2.value && pwd2.value != '') {
-//         pwd2.className = 'correct';
-//         tooltipStyle.display = 'none';
-//         return true;
-//     } else {
-//         pwd2.className = 'incorrect';
-//         tooltipStyle.display = 'inline-block';
-//         return false;
-//     }
-
-// };
-
-// check['country'] = function() {
-
-//     var country = document.getElementById('country'),
-//         tooltipStyle = getTooltip(country).style;
-
-//     if (country.options[country.selectedIndex].value != 'none') {
-//         tooltipStyle.display = 'none';
-//         return true;
-//     } else {
-//         tooltipStyle.display = 'inline-block';
-//         return false;
-//     }
-
-// };
+};
 
 //console.log(check);
 // Setting up events

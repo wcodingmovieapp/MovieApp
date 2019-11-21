@@ -23,6 +23,7 @@ function viewProfile($userId) {
     $managerMovie = new ManagerMovie();
     $dataMovie= $managerMovie->loadMovies($user['id']);
     require("./view/profile.php");
+}
 
 
 function loadProfile($postParams){
@@ -59,5 +60,4 @@ function logoutUser() {
     $_SESSION = [];
     session_destroy();
     header('Location: index.php');
-
 }

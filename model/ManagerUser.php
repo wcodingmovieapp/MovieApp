@@ -1,6 +1,6 @@
 <?php
 require_once("Manager.php");
-class ManageUser extends Manager {
+class ManagerUser extends Manager {
 
     function verifyUser($username) {
         $bdd = $this->dbConnect();

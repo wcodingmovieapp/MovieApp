@@ -21,11 +21,11 @@ try {
             if (isset($_SESSION['userId'])) {
                 viewProfile($_SESSION['userId']);
             }
-            // else {
-            //     header('Location: index.php');
-            //} 
+            
         } else if ($bodyArr['action'] == 'logoutUser') {
             logoutUser();
+        } else if ($bodyArr['action'] == 'addMovie') {
+                addMovie($bodyArr);
         }
     }
     else {

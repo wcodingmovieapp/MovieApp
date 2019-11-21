@@ -26,16 +26,16 @@ function viewProfile($userId) {
 }
 
 
-function loadProfile($postParams){
-    $username = htmlspecialchars($postParams['username']);
-    $password = htmlspecialchars($postParams['password']);
-    // $userId = 1;
-    // loadUserMovies($userId);
-    // $dataUser = verifyUser($username, $password);
-    // loadUserMovies($dataUser['userId'])
+// function loadProfile($postParams){
+//     $username = htmlspecialchars($postParams['username']);
+//     $password = htmlspecialchars($postParams['password']);
+//     // $userId = 1;
+//     // loadUserMovies($userId);
+//     // $dataUser = verifyUser($username, $password);
+//     // loadUserMovies($dataUser['userId'])
 
-    require("./view/profile.php");
-}
+//     require("./view/profile.php");
+// }
 
 function addMovie($params) {
     //$params <== $bodyArr <== movieData of movieDB.js

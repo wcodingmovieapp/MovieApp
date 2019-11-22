@@ -28,6 +28,8 @@
     width: 30%;
     justify-content: center;
     padding: 2%;
+    border: 1px solid powderblue;
+    margin-top: 2%;
 }
 
 .movieInfo {
@@ -61,6 +63,12 @@ body{
     background-color: grey;
     min-height: 100vh;
 }
+
+#cardPlus button {
+    padding: 10%;
+    font-size: 1.5em;
+}
+
 </style>
 <body>
 
@@ -95,8 +103,22 @@ body{
                 $divCard.$id.'"'.$classCard.$divPoster.$id.'"'.$classPoster.$tagImg.$dataMovie[$id]['poster'].'"></div>'.$divInfo.$id.'"'.$classInfo.$tagTitle.$dataMovie[$id]['title'].'</h3>'.$tagDirector.$dataMovie[$id]['director'].'</h3>'.$tagActors.$dataMovie[$id]['actors'].'</h3></div></div>';
             }
 ?>
+  <div id="cardPlus" class="cards">
+         <button type="button" >Add Movie</button>
+    </div>
+
 <input type="text" name="title" id="title" />
 <input type="submit" name="submit" value="search" onclick="fetchData('<?=$user['id']?>' )" />
+<script>
+        function deleteChild(parentElt) {
+            //e.firstElementChild can be used.
+            var child = parentElt.lastElementChild;
+            while (child) {
+                parentElt.removeChild(child);
+                child = parentElt.lastElementChild;
+            }
+        }
+</script>   
 <script src="./public/js/movieDB.js"></script>
     </body>
 </html>

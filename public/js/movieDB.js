@@ -7,6 +7,25 @@ let movieDirector = "";
 let movieActors = "";
 let moviePoster = "http://image.tmdb.org/t/p/w185/"
 
+
+var user_id = 1;// SHOULD LINK USERID USING SESSION OR LINK IT WHEN WE GENERATE EVENTS.
+var divCardPlus = document.querySelector('#cardPlus');
+var addButton = document.querySelector("button[type='button']");
+addButton.addEventListener("click", function(){
+    deleteChild(divCardPlus);
+    var textBox = document.createElement('input');
+    textBox.type = "text";
+    textBox.id="title";
+    divCardPlus.appendChild(textBox);
+    textBox.addEventListener("keyup", function(e){
+        if (e.keyCode === 13) {
+            userQuery = textBox.value;
+            fetchData(user_id);
+            alert("successfully added:: " + user_id);
+        }
+    });
+});
+
 function fetchData(user_id) {
   let movie = userQuery.value;
   fetch(`https://api.themoviedb.org/3/search/movie?api_key=a7a2be31391543b1180047cd25bd3045&language=en-US&query=${movie}`)

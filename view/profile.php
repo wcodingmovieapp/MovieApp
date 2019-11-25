@@ -90,8 +90,8 @@ body{
         $noMovies = count($dataMovie);
         $divCard='<div id="card';//[ex]'<div id="card
         $classCard='class="cards">';//[ex]'<div id="card0" class="cards">
-        $divPoster=' <div id="poster';
-        $classPoster='class="posters">';
+        $divPoster=' <div id="poster'; //[ex]<div id="poster
+        $classPoster='class="posters">';//[ex]'<div id="poster0" class="posters">
         $tagImg = ' <img src="';
         $divInfo='<div id="info';
         $classInfo='class="movieInfo">';
@@ -105,7 +105,7 @@ body{
 ?>
   <div id="cardPlus" class="cards">
          <button type="button" >Add Movie</button>
-    </div>
+  </div>
 
 <input type="text" name="title" id="title" />
 <input type="submit" name="submit" value="search" onclick="fetchData('<?=$user['id']?>' )" />

@@ -1,67 +1,43 @@
-let userQuery = document.getElementById('title');
-
+//let userQuery = document.getElementById('title');
 let movieId = "";
 let movieTitle = "";
 let movieReleaseDate = "";
 let movieDirector = "";
 let movieActors = "";
-let moviePoster = "http://image.tmdb.org/t/p/w185/"
-
-
+let moviePoster = "http://image.tmdb.org/t/p/w185/";
 var user_id = 1;// SHOULD LINK USERID USING SESSION OR LINK IT WHEN WE GENERATE EVENTS.
 var divCardPlus = document.querySelector('#cardPlus');
-var addButton = document.querySelector("button[type='button']");
-addButton.addEventListener("click", function(){
-    deleteChild(divCardPlus);
-    var textBox = document.createElement('input');
-    textBox.type = "text";
-    textBox.id="title";
-    divCardPlus.appendChild(textBox);
-    textBox.addEventListener("keyup", function(e){
-        if (e.keyCode === 13) {
-            userQuery = textBox.value;
-            fetchData(user_id);
-            alert("successfully added:: " + user_id);
-        }
-    });
-});
-
 function fetchData(user_id) {
-  let movie = userQuery.value;
+  console.log(user_id);
+  //let movie = userQuery.value;
+  let movie = document.getElementById('title').value;
   fetch(`https://api.themoviedb.org/3/search/movie?api_key=a7a2be31391543b1180047cd25bd3045&language=en-US&query=${movie}`)
   .then(response => {
     return response.json()
   })
   .then(data => {
     // Work with JSON data here
+    console.log("HEY 1");
     console.log(data);
     movieId = data.results[0].id;
     movieTitle = data.results[0].title;
     movieReleaseDate = data.results[0].release_date;
     moviePoster += data.results[0].poster_path;
     searchMovie(user_id);
-
   })
   .catch(err => {
     // Do something for an error here
   })
- 
-
 }
 
-
-
-
   function searchMovie(userId) {
-
-
   fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=a7a2be31391543b1180047cd25bd3045`)
   .then(response => {
     return response.json()
   })
   .then(data => {
     // Work with JSON data here
- 
+    console.log("HEY 2");
     for (let i = 0; i < data.crew.length; i++){
         if (data.crew[i].job === "Director") {
             movieDirector = data.crew[i].name;
@@ -89,18 +65,15 @@ function fetchData(user_id) {
               // //todc
               // const listMovies = JSON.parse(xhr.responseText);
               
-              console.log();
+              console.log(xhr.responseText);
               // let obj = JSON.parse(xhr.responseText);
               
             }
     }
     xhr.send(JSON.stringify(movieData));
 
-
   })
   .catch(err => {
     // Do something for an error here
   })
   }
-
- 

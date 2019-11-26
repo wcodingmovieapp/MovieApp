@@ -23,7 +23,7 @@ try {
             }
             
         } else if ($bodyArr['action'] == 'logoutUser') {
-            logoutUser();
+                logoutUser();
         } else if ($bodyArr['action'] == 'addMovie') {
                 addMovie($bodyArr);
         }

@@ -214,43 +214,7 @@
 
 
         </div>
-        <script>
-          //numBoxes = the # of cards -> if(numBoxes < 5){create input}
-        //   var numBoxes = 0; //check whether input box exists or not
-        //     var divCardPlus = document.querySelector('#cardPlus');
-        //     var searchBox = document.createElement('input');
-        //         divCardPlus.addEventListener("click", function(){
-        //             if (numBoxes == 0) {
-                       
-        //                 searchBox.type="text";
-        //                 searchBox.id ="title";
-        //                 divCardPlus.appendChild(searchBox); 
 
-        //                 numBoxes = 1;
-        //             }
-        //         searchBox.addEventListener("keyup", function(e){
-        //             if(e.keyCode===13){
-        //                 userQuery = searchBox.value;
-        //                 fetchData(user_id);
-
-        //                 // var xhr = new XMLHttpRequest();
-        //                 // xhr.open('GET', 'index.php?action=addMovie');
-        //                 // xhr.onreadystatechange = function() { 
-        //                 //         if (xhr.readyState == 4 && xhr.status == 200) {
-                                    
-        //                 //         var newMovie = JSON.parse(xhr.responseText);
-        //                 //         console.log("Obj from DB" + newMovie);
-        //                 //         }
-        //                 // }
-        //                 // xhr.send(null);
-                      
-
-        //             }
-        //         });
-        //     });
-        // 
-
-        </script>
         <script src="./public/js/movieDB.js"></script>
         <script src="./public/js/drag_and_drop.js"></script>
     </body>

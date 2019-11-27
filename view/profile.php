@@ -237,16 +237,7 @@
                         userQuery = searchBox.value;
                         fetchData(user_id);
 
-                        // var xhr = new XMLHttpRequest();
-                        // xhr.open('GET', 'index.php?action=addMovie');
-                        // xhr.onreadystatechange = function() { 
-                        //         if (xhr.readyState == 4 && xhr.status == 200) {
-                                    
-                        //         var newMovie = JSON.parse(xhr.responseText);
-                        //         console.log("Obj from DB" + newMovie);
-                        //         }
-                        // }
-                        // xhr.send(null);
+
                       
 
                     }

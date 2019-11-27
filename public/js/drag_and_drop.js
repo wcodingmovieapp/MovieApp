@@ -3,43 +3,50 @@ const lists = document.querySelectorAll('.list');
 const edit = document.querySelector('#edit');
 const save = document.querySelector('#save');
 const del = document.querySelectorAll('#delete')
+const childCon = document.querySelectorAll('.children-container')
 
 
 
-save.addEventListener('click', () => {
-	for (let i = 0; i < list_items.length; i++) {
-		const delItem = del[i]
-		delItem.disabled = true;
-		list_items[i].setAttribute("draggable", "false");
+save.addEventListener('click', () => {  // when i click save i don't want items to be editable or deletable
+	for (let i = 0; i < list_items.length; i++) { //loops through boxes
+		const delItem = del[i] // each delete button is selected
+		delItem.disabled = true; // each delete button is now disabled - will not work
+		list_items[i].setAttribute("draggable", "false"); // each box item can not be dragged
 	}
 
 	
 })
 
-edit.addEventListener('click', () => {
+edit.addEventListener('click', () => { // when i click edit i want every item to be editable and deletable
 
-	for (let i = 0; i < del.length; i++) {
-		const delItem = del[i]
-		delItem.disabled = false;
-		delItem.addEventListener('click', (e) => {
-			const delThis = e.target.parentElement;
-			delThis.remove();
+	for (let i = 0; i < del.length; i++) { // loop through delete boxes
+		const delItem = del[i] // select each individual delete box
+		delItem.disabled = false; // it is not disabled anymore, can be clicked
+		delItem.addEventListener('click', (e) => { // when i click
+			const delThis = e.target.parentElement; // i select the parent element of the del button (which is the whole card)
+			delThis.remove(); // i remove that card
 		})
 	}
 
-	for (let i = 0; i < list_items.length-1; i++) {
-        const item = list_items[i];
+	for (let i = 0; i < list_items.length-1; i++) { // i go through all of the cards
+        const item = list_items[i]; // i select each card
 
-		item.setAttribute("draggable", "true")
+		item.setAttribute("draggable", "true") // each card can now be dragged
 		
-		item.addEventListener('dragstart', function () {
-			draggedItem = item;
+		item.addEventListener('dragstart', function () { 
+            draggedItem = item;
+            for (let x = 0; x < childCon.length; x++) {
+				childCon[x].style.display = "none";
+			}
 			setTimeout(function () {
 				item.style.display = 'none';
 			}, 0)
 		});
 	
 		item.addEventListener('dragend', function () {
+            for (let x = 0; x < childCon.length; x++) {
+				childCon[x].style.display = "block";
+			}
 			setTimeout(function () {
 				draggedItem.style.display = 'block';
 			}, 0);
@@ -68,8 +75,7 @@ edit.addEventListener('click', () => {
 			});
 	
 			list.addEventListener('drop', function (e) {
-                console.log(e.target)
-				this.insertBefore(draggedItem, e.target);
+                this.insertBefore(draggedItem, e.target);
 				this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
 			});
 		}

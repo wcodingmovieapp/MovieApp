@@ -62,11 +62,11 @@
             margin: 40px;
         }
  
-        .movieInfo{
+        .children-container{
             position: absolute;
             width: 50%;
             height: 100%;
-            top: 10%;
+            top: 20%;
             left: 50%;
         }
  
@@ -185,18 +185,14 @@
                 for($id=0; $id<$noMovies; $id++){
                     echo '<div id="card'.$id.'" class="cards">
                     <input type="button" class="delete" name="delete" id="delete" value="X" disabled="true" />
-                
-                                <img src="'.$dataMovie[$id]["poster"].'">
-                
-                            <div id="info'.$id.'" class="movieInfo">
-                                <h1>'.$dataMovie[$id]["title"].'</h1>
+                            <span><h1>'.$dataMovie[$id]["title"].'</h1></span>
+                            <img src="'.$dataMovie[$id]["poster"].'">
+                            <br /><br />
+                            <div id="info'.$id.'" class="children-container">
                                 <p>Director: '.$dataMovie[$id]["director"].' <br>
                                 Actors: '.$dataMovie[$id]["actors"].'
                                 </p>
-                                <div class="buttons">
-                                
-                                    <button class="like"><span>♥</span></button>
-                                </div>
+                         
                             </div>
                         </div>';
                 }
@@ -206,9 +202,9 @@
                 <div id="cardPlus" class="cards" draggable="false">
                         <br><br><br><br><!--vertical align: middle... was not working-->
                         <h1>+</h1>
-                        <a><h1>Add a Movie Card</h1></a>
-                        
-                </div>
+                        <h1>ADD</h1>
+                        <input type="text" name="title" id="title"/>
+                        <input type="submit" value="search" onclick="fetchData(<?=$user['id']?>)"
             </div>
             </div>
         <div class="button-container">
@@ -220,38 +216,40 @@
         </div>
         <script>
           //numBoxes = the # of cards -> if(numBoxes < 5){create input}
-          var numBoxes = 0; //check whether input box exists or not
-            var divCardPlus = document.querySelector('#cardPlus');
-            var searchBox = document.createElement('input');
-                divCardPlus.addEventListener("click", function(){
-                    if (numBoxes == 0) {
+        //   var numBoxes = 0; //check whether input box exists or not
+        //     var divCardPlus = document.querySelector('#cardPlus');
+        //     var searchBox = document.createElement('input');
+        //         divCardPlus.addEventListener("click", function(){
+        //             if (numBoxes == 0) {
                        
-                        searchBox.type="text";
-                        searchBox.id ="title";
-                        divCardPlus.appendChild(searchBox); 
+        //                 searchBox.type="text";
+        //                 searchBox.id ="title";
+        //                 divCardPlus.appendChild(searchBox); 
 
-                        numBoxes = 1;
-                    }
-                searchBox.addEventListener("keyup", function(e){
-                    if(e.keyCode===13){
-                        userQuery = searchBox.value;
-                        fetchData(user_id);
+        //                 numBoxes = 1;
+        //             }
+        //         searchBox.addEventListener("keyup", function(e){
+        //             if(e.keyCode===13){
+        //                 userQuery = searchBox.value;
+        //                 fetchData(user_id);
 
-                        // var xhr = new XMLHttpRequest();
-                        // xhr.open('GET', 'index.php?action=addMovie');
-                        // xhr.onreadystatechange = function() { 
-                        //         if (xhr.readyState == 4 && xhr.status == 200) {
+        //                 // var xhr = new XMLHttpRequest();
+        //                 // xhr.open('GET', 'index.php?action=addMovie');
+        //                 // xhr.onreadystatechange = function() { 
+        //                 //         if (xhr.readyState == 4 && xhr.status == 200) {
                                     
-                        //         var newMovie = JSON.parse(xhr.responseText);
-                        //         console.log("Obj from DB" + newMovie);
-                        //         }
-                        // }
-                        // xhr.send(null);
+        //                 //         var newMovie = JSON.parse(xhr.responseText);
+        //                 //         console.log("Obj from DB" + newMovie);
+        //                 //         }
+        //                 // }
+        //                 // xhr.send(null);
                       
 
-                    }
-                });
-            });
+        //             }
+        //         });
+        //     });
+        // 
+
         </script>
         <script src="./public/js/movieDB.js"></script>
         <script src="./public/js/drag_and_drop.js"></script>

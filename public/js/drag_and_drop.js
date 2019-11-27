@@ -3,6 +3,7 @@ const lists = document.querySelectorAll('.list');
 const edit = document.querySelector('#edit');
 const save = document.querySelector('#save');
 const del = document.querySelectorAll('#delete')
+const childCon = document.querySelectorAll('.children-container')
 
 
 
@@ -33,13 +34,19 @@ edit.addEventListener('click', () => {
 		item.setAttribute("draggable", "true")
 		
 		item.addEventListener('dragstart', function () {
-			draggedItem = item;
+            draggedItem = item;
+            for (let x = 0; x < childCon.length; x++) {
+				childCon[x].style.display = "none";
+			}
 			setTimeout(function () {
 				item.style.display = 'none';
 			}, 0)
 		});
 	
 		item.addEventListener('dragend', function () {
+            for (let x = 0; x < childCon.length; x++) {
+				childCon[x].style.display = "block";
+			}
 			setTimeout(function () {
 				draggedItem.style.display = 'block';
 			}, 0);
@@ -68,8 +75,7 @@ edit.addEventListener('click', () => {
 			});
 	
 			list.addEventListener('drop', function (e) {
-                console.log(e.target)
-				this.insertBefore(draggedItem, e.target);
+                this.insertBefore(draggedItem, e.target);
 				this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
 			});
 		}

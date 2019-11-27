@@ -62,8 +62,8 @@ function fetchData(user_id) {
     xhr.open('POST', 'index.php');//trying to globalize the action between FB and GMAIL
     xhr.onreadystatechange = function() { //폴백
             if (xhr.readyState == 4 && xhr.status == 200) {
-              // //todc
-              // const listMovies = JSON.parse(xhr.responseText);
+              
+              var newMovie = JSON.parse(xhr.responseText);
               
               console.log(xhr.responseText);
               // let obj = JSON.parse(xhr.responseText);

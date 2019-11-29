@@ -53,24 +53,24 @@ TxtRotate.prototype.tick = function() {
     // INJECT CSS
     const css = document.createElement("style");
     css.type = "text/css";
-    css.innerHTML = ".txt-rotate > .wrap { border-right: 0.1em solid black;  height: 25px; display: inline-block;}";
+    css.innerHTML = ".txt-rotate > .wrap { border-right: 0.1em solid white;  height: 60px; display: inline-block;}";
    
     
 
     function blink() {
         if (window.innerWidth == 500) {
         
-          if(css.innerHTML === ".txt-rotate > .wrap { border-right: 0.1em solid black; padding: 2%; height: 25px; display: inline-block;}") {
-            css.innerHTML = ".txt-rotate > .wrap { border-right: 0.1em solid rgba(0, 0, 0, 0); padding: 2%; height: 25px; display: inline-block;}"
+          if(css.innerHTML === ".txt-rotate > .wrap { border-right: 0.1em solid white; padding: 2%; height: 60px; display: inline-block;}") {
+            css.innerHTML = ".txt-rotate > .wrap { border-right: 0.1em solid rgba(0, 0, 0, 0); padding: 2%; height: 60px; display: inline-block;}"
          } else {
-             css.innerHTML = ".txt-rotate > .wrap { border-right: 0.1em solid black; padding: 2%; height: 25px; display: inline-block;}"
+             css.innerHTML = ".txt-rotate > .wrap { border-right: 0.1em solid white; padding: 2%; height: 60px; display: inline-block;}"
          }
         } else if (window.innerWidth > 500) {
           
-          if(css.innerHTML === ".txt-rotate > .wrap { border-right: 0.1em solid black; padding: 2%; height: 25px; display: inline-block;}") {
-            css.innerHTML = ".txt-rotate > .wrap { border-right: 0.1em solid rgba(0, 0, 0, 0); padding: 2%; height: 25px; display: inline-block;}"
+          if(css.innerHTML === ".txt-rotate > .wrap { border-right: 0.1em solid white; padding: 2%; height: 60px; display: inline-block;}") {
+            css.innerHTML = ".txt-rotate > .wrap { border-right: 0.1em solid rgba(0, 0, 0, 0); padding: 2%; height: 60px; display: inline-block;}"
          } else {
-             css.innerHTML = ".txt-rotate > .wrap { border-right: 0.1em solid black; padding: 2%; height: 25px; display: inline-block;}"
+             css.innerHTML = ".txt-rotate > .wrap { border-right: 0.1em solid white; padding: 2%; height: 60px; display: inline-block;}"
          }
         }
         
@@ -89,11 +89,11 @@ let counter = 0;
 function imageCycle() {
 
 
-  if (image.hasAttribute("src") && counter < 4) {
+  if (image.hasAttribute("src") && counter < 5) {
     counter++;
     image.setAttribute("src", `./img/${counter}.png`)
 
-  } else if (image.hasAttribute("src") && counter == 4) {
+  } else if (image.hasAttribute("src") && counter == 5) {
     counter = 0;
   }
 

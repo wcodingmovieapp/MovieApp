@@ -5,6 +5,7 @@ body, .hero, .hero-image, section, #fullpage {
 
 body {
     font-family: 'Lato', sans-serif;
+    background: #FCF5EF;
 }
 
 
@@ -99,7 +100,6 @@ right: 5%;
 .content-container {
     width: 80%;
     height: 80%;
-    background: rgba(255, 255, 255, .2);
     margin: auto;
     z-index: 100;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -114,17 +114,6 @@ right: 5%;
     
 }
 
-.animation {
-
-    
-         animation: fadein ;
-}
-
-@keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
 
 
 #button-div {
@@ -137,7 +126,7 @@ right: 5%;
     width: 200px;
     height: 80px;
     font-size: 1.5rem;
-    background: rgba(217, 88, 136, 1);
+    background: rgb(235, 91, 82);
     border-style: none;
     border-radius: 4%;
     color: white;
@@ -159,11 +148,27 @@ right: 5%;
     padding: 1%;
 }
 
+.crop-bg {
+    position: absolute;
+    top: 10%;
+    left: 13.5%;
+    height: 600px;
+    border-radius: 50%;
+    opacity: 1;
+}
+
+#right-side {
+    width: 50%;
+    float: right;
+    height: 100%;
+
+}
+
 
 #right-side h1 {
     position: absolute;
     top: 10%;
-    left: 10%;
+    left: 5%;
 }
 
 #right-side h2 {
@@ -183,15 +188,15 @@ right: 5%;
 
 
 .phone-layout {
-    width: 15vw;
+    width: 40vw;
     min-height: 60vh;
-    color: white;
+    color: rgb(82, 79, 79);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: absolute;
     border-radius: 4%;
-    right: 20%;
+    right: 10%;
     top: 15%;
     z-index: 0;
     box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -200,29 +205,51 @@ right: 5%;
 
 .phone-layout-top { 
     height: 45vh;
-    background: rgb(115, 91, 243);
     font-size: 2em;
 }
 
 
+
 .phone-layout-bottom {  
     height: 15vh;
-    background: white;
-    padding-top: 10%;
     padding-left: 5%;
 }
 
 
 .phone-layout-bottom span {
-    color: black;
+   
     z-index: 100;
-    font-size: 1.2em;
+    font-size: 2em;
+    
 }
 
 .search-bar {
+    position: absolute;
+    top: 10%;
     height: 35%;
-    border-bottom: 2px solid cornflowerblue;
+    border-bottom: 2px solid white;
     border-radius: 3%;
-    
+  
     margin-right: 4%;
+    z-index: 1000;
+}
+
+
+
+
+
+/*-------------
+-------------
+-------------
+PAGE 2!!!!!!!
+-------------
+-------------
+-------------
+*/
+
+
+
+.page-2 {
+    height: 100vh;
+    width: 100vw;
 }

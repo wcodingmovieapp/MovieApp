@@ -28,7 +28,7 @@
                 </div>
                 <div class="left-main-content">
                 <div class="main-content">
-
+               
                     <img src="./img/high5.png" />
                         <div class="content-container">
                             <div class="column" id="left-side">
@@ -44,7 +44,7 @@
                              
                                     </div>
                                     <div class="phone-layout-bottom">
-                                    <div class="search-bar">
+                    
                                     <span
                                     class="txt-rotate"
                                     data-period='2000'
@@ -56,7 +56,7 @@
                                     "Star Wars: Episode IV"
                                     ]'
                                     ></span>
-                                    </div>
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
         </div>
 
     </section>
-<section class="section s2">
+<!-- <section class="section s2">
     <div class="page-2">
         <div class="p2-container">
         <div class="p2-text">
@@ -77,12 +77,12 @@
         </div> 
         <div class="skew-container">    
         <div class="skew">
-        <img src="./img/about_us.png" alt="" width="20%;">
+        <img src="./img/uma.png" alt="" width="20%;">
         </div>  
         </div>
         </div>
     </div>
-</section>
+</section> -->
 
 </div>
 

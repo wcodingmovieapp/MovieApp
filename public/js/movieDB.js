@@ -8,6 +8,7 @@ let moviePoster = "http://image.tmdb.org/t/p/w185/";
 
 function fetchData(user_id) {
   let movie = userQuery.value;
+
   fetch(
     `https://api.themoviedb.org/3/search/movie?api_key=a7a2be31391543b1180047cd25bd3045&language=en-US&query=${movie}`
   )
@@ -16,7 +17,7 @@ function fetchData(user_id) {
     })
     .then(data => {
       // Work with JSON data here
-      console.log(data);
+      // console.log(data);
       movieId = data.results[0].id;
       movieTitle = data.results[0].title;
       movieReleaseDate = data.results[0].release_date;

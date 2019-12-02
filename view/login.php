@@ -15,7 +15,7 @@
       display: "inline";
     }
     </style>
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="./public/style/styles.css">
   </head>
   <body>
 

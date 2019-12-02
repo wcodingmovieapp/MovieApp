@@ -25,8 +25,8 @@ try {
         } else if ($bodyArr['action'] == 'logoutUser') {
             logoutUser();
         } else if ($bodyArr['action'] == 'addMovie') {
-                addMovie($bodyArr);
-        }
+            addMovie($bodyArr);
+        } 
     }
     else {
         loginPage();

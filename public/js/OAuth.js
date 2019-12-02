@@ -9,7 +9,7 @@
 
 function onSignIn(googleUser) {
   //get profile info
-  console.log(googleUser);
+  // console.log(googleUser);
   var profile = googleUser.getBasicProfile();
 
   //get user token

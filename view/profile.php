@@ -52,7 +52,7 @@
             </style>
         
         <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <link rel="stylesheet" href="../styles/style.css">
+        <!-- <link rel="stylesheet" href="../styles/style.css"> -->
     </head>
     <body>
         <div class="header">
@@ -82,7 +82,9 @@
 
         <input type="text" name="title" id="title" />
         <input type="submit" name="submit" value="search" onclick="fetchData('<?=$user['id']?>' )" />
+        <div id="autocomplete"></div>
         <script src="./public/js/movieDB.js"></script>
+        <script src="./public/js/autocomplete.js"></script>
     </body>
 </html>
 

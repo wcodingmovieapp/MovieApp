@@ -10,20 +10,18 @@
       content="856185366006-bbrto3am0gcfgd0qgrsodl6scame43ma.apps.googleusercontent.com"
     />
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    
     <style>
     #socialLogin{
       display: "inline";
     }
     </style>
+    <link rel="stylesheet" href="../styles/style.css">
   </head>
   <body>
 
  
     <section id='signIn'>
         <div id='normalLogin'>
-            <!-- Steve -->
-          <!-- Note to Nanee: Delete below test form when pull Steve's code here -->
           <?php
            if(isset ($_REQUEST['errors']) AND $_REQUEST['errors'] == true) {
                if($_REQUEST['errors'] == "success") {
@@ -46,32 +44,17 @@
 
         
         <div id='socialLogin'>
-          <div id="facebook">
-          <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-          </fb:login-button>
+          <!-- <div id="facebook">
+            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+            </fb:login-button>
 
-          <div id="status">
-          </div>
-        </div>
-          
-
-
-          
-
-
-
-
-
-
-
+            <div id="status"></div> -->
             <div id="gmail">
                 <!-- Nanee -->
-                
                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 <a href="#" onclick="signOut();">Sign out</a>
             </div>
         </div>
-    
     </section>
 
     <section id='signUp'>

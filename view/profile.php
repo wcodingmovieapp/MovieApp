@@ -56,11 +56,6 @@
     </head>
     <body>
         <div class="header">
-            <form align="right" name="logout" method="post" action="log_out.php" style="black">
-                <label class="logoutLblPos">
-                    <input name="submit2" type="submit" id="submit2" value="logout">
-                </label>
-            </form>
             <h1><?=$user['username']?></h1>
         </div>
         <a href="#" onclick="signOut();">Sign out</a>

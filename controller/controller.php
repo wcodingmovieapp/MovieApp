@@ -49,6 +49,7 @@ function addMovie($params) {
 }
 
 function deleteMovie($params){
+    echo "deleteMovie of controller";
     $managerMovie = new ManagerMovie();
     $managerMovie->deleteMovie($params);
 }

@@ -65,10 +65,7 @@ function fetchData(user_id) {
     xhr.onreadystatechange = function() { //폴백
             if (xhr.readyState == 4 && xhr.status == 200) {
              var newMovie = JSON.parse(xhr.responseText);
-
-             showNewMovie(newMovie);
-
-             
+             showNewMovie(newMovie);     
             }
     }
     xhr.send(JSON.stringify(movieData));

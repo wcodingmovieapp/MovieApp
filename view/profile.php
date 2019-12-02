@@ -165,7 +165,7 @@
 
 
         <div class="header">
-                <form align="right" name="logout" method="post" action="log_out.php" style="black">
+                <form align="right" name="logout" method="post" action="index.php?action=logoutUser" style="black">
                     <label class="logoutLblPos">
                     <input name="submit2" type="submit" id="submit2" value="logout">
                     </label>

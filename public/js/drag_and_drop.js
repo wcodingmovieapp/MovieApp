@@ -101,7 +101,7 @@ function deleteMovie(e) {
 	
 	var movieTitle = e.target.nextSibling.nextSibling.firstChild.textContent;
 
-	let delData = {
+	const delData = {
 		"userId": userId,
 		"title": movieTitle,
 		"action": "deleteMovie"

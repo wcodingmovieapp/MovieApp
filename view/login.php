@@ -52,7 +52,7 @@
               
            }
         ?>
-          <form name="myForm" id="myForm" method="POST" action="../index.php?action=loginUser">
+          <form name="myForm" id="myForm" method="POST" action="index.php?action=loginUser">
             <input class="form-buttons" name="username" id="loginusername" type="text" placeholder="username"/><br></br>
             <input class="form-buttons" name="password" id="loginpassword" type="password" placeholder="password"/><br></br>
             <button name="submit" id="submit" type="submit">Login</button>
@@ -131,7 +131,7 @@
     </div>
     </div>
     </div>
-    <script src="../public/js/OAuth.js"></script>
-    <script src="../public/js/slider.js"></script>
+    <script src="./public/js/OAuth.js"></script>
+    <script src="./public/js/slider.js"></script>
   </body>
 </html>

@@ -11,6 +11,7 @@ try {
         } else if ($bodyArr['action'] == 'subscribeUser'){
             subscribeUser($bodyArr);
         } else if ($bodyArr['action'] == 'loginUser'){
+            print_r($bodyArr);
             if(isset($bodyArr['username']) && isset($bodyArr['password'])) 
             {
                 echo "this is loginUser action!!!!";

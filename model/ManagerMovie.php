@@ -43,11 +43,30 @@ class  ManagerMovie extends Manager {
    function deleteMovie($params){
       echo "deleteMovie in manager";
       $db = $this->dbConnect();
-      $req->$db->prepare('DELETE FROM Movie WHERE user_id = :user_id AND title = :title');
+      $req=$db->prepare('DELETE FROM Movie WHERE user_id = :user_id AND title = :title');
       $req->execute(array(
             'user_id' => $params['userId'],
             'title' =>  $params['title']
       ));
+   }
+
+   function updateRanking($params){
+      echo "updateRanking in manager";
+      print_r($params);
+      $db = $this->dbConnect();
+      $req=$db->prepare('UPDATE Movie SET ranking = 1 AND title = :first
+                                          ranking = 2 AND title = :second
+                                          ranking = 3 AND title = :third
+                                          ranking = 4 AND title = :forth
+                                          ranking = 5 AND title = :fifth'); 
+      $req->execute(array(
+            'first' => $params['1'],
+            'second' =>  $params['2'],
+            'third' => $params['3'],
+            'forth' => $params['4'],
+            'fifth' => $params['5']
+      ));
+
    }
 
    function loadMovies($userId){

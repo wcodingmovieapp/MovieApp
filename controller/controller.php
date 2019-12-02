@@ -54,6 +54,12 @@ function deleteMovie($params){
     $managerMovie->deleteMovie($params);
 }
 
+function updateRanking($params){
+    echo "updateRanking of controller";
+    $managerMovie = new ManagerMovie();
+    $managerMovie->updateRanking($params);
+}
+
 function subscribeUser($params) {
     $managerUser = new ManagerUser();
     $errors = $managerUser->subscribeUser($params);

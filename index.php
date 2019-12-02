@@ -32,6 +32,8 @@ try {
                 addMovie($bodyArr);
         } else if ($bodyArr['action'] == 'deleteMovie'){
                 deleteMovie($bodyArr);
+        } else if ($bodyArr['action'] == 'updateRanking'){
+                updateRanking($bodyArr);
         }
     }
     else {

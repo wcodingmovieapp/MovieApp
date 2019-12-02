@@ -2,7 +2,7 @@ let slider = document.getElementById('slider');
 let image = document.querySelectorAll('#overlay-img')
 let row = document.querySelector('.row').offsetHeight;
 
-console.log(row);
+
 
 
 for (let i = 0; i < image.length; i++) {
@@ -27,7 +27,6 @@ let counter = 0;
 
 function imageCycle() {
     for (let i = 0; i<image.length; i++) {
-        console.log(image[i])
         counter+= 1;
         if (image[i].hasAttribute("src") && counter < 13) {
 

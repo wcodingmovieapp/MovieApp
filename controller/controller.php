@@ -7,6 +7,7 @@ function loginPage() {
 }
 // insert or connect the user
 function loginUser($params){
+    echo "!!! controller loginUser function!!!!";
     $managerUser = new ManagerUser();
     $userId = $managerUser->loginUser($params);
     if(isset($params['ajax'])) {
@@ -45,6 +46,11 @@ function addMovie($params) {
     $last_id = $managerMovie->addMovie($params);
     $movie = $managerMovie->getNewMovie($last_id);
     echo json_encode($movie);   
+}
+
+function deleteMovie($params){
+    $managerMovie = new ManagerMovie();
+    $managerMovie->deleteMovie($params);
 }
 
 function subscribeUser($params) {

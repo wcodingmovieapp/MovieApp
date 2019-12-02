@@ -40,6 +40,15 @@ class  ManagerMovie extends Manager {
       return $req->fetch();
    }
 
+   function deleteMovie($params){
+      $db = $this->dbConnect();
+      $req->$db->prepare('DELETE FROM Movie WHERE user_id = :user_id AND title = :title');
+      $req->execute(array(
+            'user_id' => $params['userId'],
+            'title' =>  $params['title']
+      ));
+   }
+
    function loadMovies($userId){
        $db = $this->dbConnect(); //connect DB
        $req = $db->prepare('SELECT * FROM Movie WHERE user_id = :user_id ORDER BY ranking');

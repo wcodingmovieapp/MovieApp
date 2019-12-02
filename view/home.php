@@ -17,7 +17,9 @@
     <section class="section s1">
         <div class="hero">
             <div class="hero-image">
+
                 <div class='nav'>
+
                     <nav>
                         <ul class="menu-list">
                             <li class="menu-list-item"><a href="#">about us</a></li>
@@ -27,9 +29,10 @@
                     </nav>
                 </div>
                 <div class="left-main-content">
+                <img src="./img/high5.png" id="logo-img" />
                 <div class="main-content">
                
-                    <img src="./img/high5.png" />
+                  
                         <div class="content-container">
                             <div class="column" id="left-side">
                                 <img src="./img/1.png" class="image" id="leon" />
@@ -43,8 +46,9 @@
                                         <h1>What Are Your Favorite Movies Of All Time..?</h1>
                              
                                     </div>
+                                    <div class="phone-layout-border">
                                     <div class="phone-layout-bottom">
-                    
+
                                     <span
                                     class="txt-rotate"
                                     data-period='2000'
@@ -53,10 +57,12 @@
                                     "A Clockwork Orange",
                                     "Casablanca",
                                     "The Godfather",
-                                    "Star Wars: Episode IV"
+                                    "Star Wars: Episode IV",
+                                    "Taxi Driver",
+                                    "Goodfellas"
                                     ]'
                                     ></span>
-                                    
+                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -66,23 +72,6 @@
         </div>
 
     </section>
-<!-- <section class="section s2">
-    <div class="page-2">
-        <div class="p2-container">
-        <div class="p2-text">
-            <h1 id="page2-header">About us</h1>
-            <div class="striped-border-page-2 stripe-selector"></div>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur velit expedita dolorem molestiae cum. Incidunt molestias, corrupti distinctio quae dolorem cumque nesciunt natus maxime sapiente quaerat, aut voluptatem, quas omnis?</p>
-            <div class="button-container"><button class="button-block">View More</button></div>
-        </div> 
-        <div class="skew-container">    
-        <div class="skew">
-        <img src="./img/uma.png" alt="" width="20%;">
-        </div>  
-        </div>
-        </div>
-    </div>
-</section> -->
 
 </div>
 

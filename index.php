@@ -13,6 +13,9 @@ try {
         } else if ($bodyArr['action'] == 'loginUser'){
             if(isset($bodyArr['username']) && isset($bodyArr['password'])) 
             {
+                echo "this is loginUser action!!!!";
+                $_SESSION['userId'] = $bodyArr['username'];
+                $_SESSION['password'] = $bodyArr['password'];
                 loginUser($bodyArr);
             } else {
                 throw new Exception('Error: login error');
@@ -26,6 +29,8 @@ try {
                 logoutUser();
         } else if ($bodyArr['action'] == 'addMovie') {
                 addMovie($bodyArr);
+        } else if ($bodyArr['action'] == 'deleteMovie'){
+                deleteMovie($bodyArr);
         }
     }
     else {

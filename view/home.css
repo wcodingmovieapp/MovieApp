@@ -85,19 +85,24 @@ padding: 0;
 margin: 0;
 position: absolute;
 right: 5%;
+}
 
+#logo-img {
+    width: 10%;
+    padding: 2%;
 }
 
 .main-content {
     height: 100%;
     width: 100%;
     position: absolute;
-    top: 0;
+    top: 7%;
     background: none;
 }
 
 
 .content-container {
+
     width: 80%;
     height: 80%;
     margin: auto;
@@ -109,7 +114,7 @@ right: 5%;
 #leon {
     width: 25%;
     position: absolute;
-    top: 3%;
+    top: 4%;
     right: 56.2%;
     
 }
@@ -119,7 +124,7 @@ right: 5%;
 #button-div {
     position: absolute;
     top: 60%;
-    left: 25%;
+    left: 26%;
 }
 
 #button {
@@ -145,7 +150,7 @@ right: 5%;
 
 .main-content img {
     width: 6%;
-    padding: 1%;
+ 
 }
 
 .crop-bg {
@@ -167,8 +172,9 @@ right: 5%;
 
 #right-side h1 {
     position: absolute;
-    top: 10%;
+    top: 0%;
     left: 5%;
+    font-size: 3em;
 }
 
 #right-side h2 {
@@ -199,8 +205,7 @@ right: 5%;
     right: 10%;
     top: 15%;
     z-index: 0;
-    box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    
+
 }
 
 .phone-layout-top { 
@@ -208,16 +213,23 @@ right: 5%;
     font-size: 2em;
 }
 
-
+.phone-layout-border {
+    width: 90%;
+    margin: auto;
+    height: 120px;
+    padding: 2%;
+    border: 3px solid white;
+}
 
 .phone-layout-bottom {  
     height: 15vh;
     padding-left: 5%;
+
 }
 
 
 .phone-layout-bottom span {
-   
+
     z-index: 100;
     font-size: 2em;
     
@@ -234,22 +246,3 @@ right: 5%;
     z-index: 1000;
 }
 
-
-
-
-
-/*-------------
--------------
--------------
-PAGE 2!!!!!!!
--------------
--------------
--------------
-*/
-
-
-
-.page-2 {
-    height: 100vh;
-    width: 100vw;
-}

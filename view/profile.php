@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php $session_userId = (isset($_SESSION['userId']))?$_SESSION['userId']:'';?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -186,14 +187,13 @@
                     echo '<div id="card'.$id.'" class="cards">
                     <input type="button" class="delete" name="delete" id="delete" value="X" disabled="true" />
                             <span><h1>'.$dataMovie[$id]["title"].'</h1></span>
-                            <img src="'.$dataMovie[$id]["poster"].'">
+                            <img src="'.$dataMovie[$id]["poster"].'" />
                             <br /><br />
                             <div id="info'.$id.'" class="children-container">
                                 <p>Director: '.$dataMovie[$id]["director"].' <br>
                                 Actors: '.$dataMovie[$id]["actors"].'
                                 </p>
-                         
-                            </div>
+                                </div>
                         </div>';
                 }
             ?>
@@ -204,8 +204,7 @@
                         <h1>+</h1>
                         <h1>ADD</h1>
                         <input type="text" name="title" id="title"/>
-                        <input type="submit" value="search" onclick="fetchData(<?=$user['id']?>)"
-            </div>
+                        <input type="submit" value="search" onclick="fetchData(<?=$user['id']?>)" />
             </div>
         <div class="button-container">
 				<input class="button" id="edit" type="button" value="Edit" name="edit" />
@@ -214,43 +213,7 @@
 
 
         </div>
-        <script>
-          //numBoxes = the # of cards -> if(numBoxes < 5){create input}
-        //   var numBoxes = 0; //check whether input box exists or not
-        //     var divCardPlus = document.querySelector('#cardPlus');
-        //     var searchBox = document.createElement('input');
-        //         divCardPlus.addEventListener("click", function(){
-        //             if (numBoxes == 0) {
-                       
-        //                 searchBox.type="text";
-        //                 searchBox.id ="title";
-        //                 divCardPlus.appendChild(searchBox); 
-
-        //                 numBoxes = 1;
-        //             }
-        //         searchBox.addEventListener("keyup", function(e){
-        //             if(e.keyCode===13){
-        //                 userQuery = searchBox.value;
-        //                 fetchData(user_id);
-
-        //                 // var xhr = new XMLHttpRequest();
-        //                 // xhr.open('GET', 'index.php?action=addMovie');
-        //                 // xhr.onreadystatechange = function() { 
-        //                 //         if (xhr.readyState == 4 && xhr.status == 200) {
-                                    
-        //                 //         var newMovie = JSON.parse(xhr.responseText);
-        //                 //         console.log("Obj from DB" + newMovie);
-        //                 //         }
-        //                 // }
-        //                 // xhr.send(null);
-                      
-
-        //             }
-        //         });
-        //     });
-        // 
-
-        </script>
+        <script type="text/javascript">var userId = '<?php echo $session_userId; ?>';</script>
         <script src="./public/js/movieDB.js"></script>
         <script src="./public/js/drag_and_drop.js"></script>
     </body>

@@ -31,6 +31,7 @@ try {
         } else if ($bodyArr['action'] == 'addMovie') {
                 addMovie($bodyArr);
         } else if ($bodyArr['action'] == 'deleteMovie'){
+                echo "action is deleteMovie in index.php";
                 deleteMovie($bodyArr);
         }
     }

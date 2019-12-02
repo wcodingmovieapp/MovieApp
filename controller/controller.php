@@ -38,10 +38,6 @@ function loadProfile($postParams){
 }
 
 function addMovie($params) {
-    //$params <== $bodyArr <== movieData of movieDB.js
-    // $last_id = $managerMovie->addMovie($params);
-    // $movie = $managerMovie->getNewMovie($last_id);
-    // echo json_encode($movie);
     $managerMovie = new ManagerMovie();
     $last_id = $managerMovie->addMovie($params);
     $movie = $managerMovie->getNewMovie($last_id);

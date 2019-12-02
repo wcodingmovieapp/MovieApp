@@ -43,7 +43,7 @@ class  ManagerMovie extends Manager {
    function deleteMovie($params){
       echo "deleteMovie in manager";
       $db = $this->dbConnect();
-      $req->$db->prepare('DELETE FROM Movie WHERE user_id = :user_id AND title = :title');
+      $req = $db->prepare('DELETE FROM Movie WHERE user_id = :user_id AND title = :title');
       $req->execute(array(
             'user_id' => $params['userId'],
             'title' =>  $params['title']

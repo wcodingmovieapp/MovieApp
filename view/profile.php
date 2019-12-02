@@ -158,6 +158,17 @@
 	height: 140px;
 }
 
+.input-card{
+    position: relative;
+    margin: auto;
+    margin-top: 50px;
+    overflow: hidden;
+    width: 520px;
+    height: 350px;
+    background: #F5F5F5;
+    border-radius: 20px 20px;    
+}
+
 </style>
 </head>
 
@@ -199,7 +210,7 @@
             ?>
             
        
-                <div id="cardPlus" class="cards" draggable="false">
+                <div id="cardPlus" class="input-card" draggable="false">
                         <br><br><br><br><!--vertical align: middle... was not working-->
                         <h1>+</h1>
                         <h1>ADD</h1>

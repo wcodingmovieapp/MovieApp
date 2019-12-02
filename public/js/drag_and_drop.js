@@ -99,9 +99,9 @@ function deleteMovie(e) {
 	delThis.remove(); // i remove that card
 
 	
-	var movieTitle = e.target.nextSibling.nextSibling.firstChild.textContent;
-
-	const delData = {
+	 
+	console.log(movieTitle)
+	var delData = {
 		"userId": userId,
 		"title": movieTitle,
 		"action": "deleteMovie"
@@ -112,9 +112,13 @@ function deleteMovie(e) {
 		xhr.open('POST', 'index.php');
 		xhr.onreadystatechange = function() { //폴백
             if (xhr.readyState == 4 && xhr.status == 200) {
+			 
              console.log("success delete ajax");
             }
     }
-    xhr.send(JSON.stringify(delData));
+	xhr.send(JSON.stringify(delData));
+	
+
+
 
 }

@@ -33,6 +33,8 @@ try {
         } else if ($bodyArr['action'] == 'deleteMovie'){
                 echo "action is deleteMovie in index.php";
                 deleteMovie($bodyArr);
+        } else if ($bodyArr['action'] == 'updateRanking'){
+                updateRanking($bodyArr);
         }
     }
     else {

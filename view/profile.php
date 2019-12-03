@@ -52,7 +52,7 @@
             </style>
         
         <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <!-- <link rel="stylesheet" href="../styles/style.css"> -->
+        <link rel="stylesheet" href="./public/style/style.css">
     </head>
     <body>
         <div class="header">

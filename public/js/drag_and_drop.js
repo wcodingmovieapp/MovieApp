@@ -98,9 +98,11 @@ function deleteMovie(e) {
 	let delThis = e.target.parentElement; // i select the parent element of the del button (which is the whole card)
 	delThis.remove(); // i remove that card
 
-	
-	 
-	console.log(movieTitle)
+	var movieTitle = e.target.nextSibling.nextSibling.firstChild.textContent;
+
+	console.log(userId);
+	console.log(movieTitle);
+
 	var delData = {
 		"userId": userId,
 		"title": movieTitle,
@@ -112,7 +114,7 @@ function deleteMovie(e) {
 		xhr.open('POST', 'index.php');
 		xhr.onreadystatechange = function() { //폴백
             if (xhr.readyState == 4 && xhr.status == 200) {
-			 
+
              console.log("success delete ajax");
             }
     }

@@ -34,7 +34,19 @@ try {
                 echo "action is deleteMovie in index.php";
                 deleteMovie($bodyArr);
         } else if ($bodyArr['action'] == 'updateRanking'){
-                updateRanking($bodyArr);
+            if(isset($bodyArr[5])){
+                updateRanking($bodyArr, 5);
+            }else if(isset($bodyArr[4])){
+                updateRanking($bodyArr, 4);
+            }else if(isset($bodyArr[3])){
+                updateRanking($bodyArr, 3);
+            }else if(isset($bodyArr[2])){
+                updateRanking($bodyArr, 2);
+            }else if(isset($bodyArr[1])){
+                updateRanking($bodyArr, 1);
+            }else{
+                echo "There is no change to be updated"; //messeage pop up for interection??
+            }
         }
     }
     else {

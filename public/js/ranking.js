@@ -17,11 +17,8 @@ let saveRanking = document.getElementById('save'); //[save] button
     var movieRanking = {
         "action": "updateRanking",
         "userId": userId,
-        ranking: {},
         updateRanking: function(rank, title){
-            this.ranking[rank] = {
-                title: title
-            };
+            this[rank] = title;
         }
     }
 

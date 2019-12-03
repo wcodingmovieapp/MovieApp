@@ -10,7 +10,7 @@
       content="856185366006-bbrto3am0gcfgd0qgrsodl6scame43ma.apps.googleusercontent.com"
     />
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="./view/login.css">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     
     <style>
@@ -31,7 +31,7 @@
     </div>
   <div class="row">
     <div class="column">
-    <img src="./img/slides/1.jpg" class="overlayImg-left" id="overlay-img" />
+    <img src="./view/img/slides/1.jpg" class="overlayImg-left" id="overlay-img" />
     <section id='signIn'>
         <div class="header">
         <h1>Login</h1>

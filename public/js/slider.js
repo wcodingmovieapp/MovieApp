@@ -30,7 +30,7 @@ function imageCycle() {
         counter+= 1;
         if (image[i].hasAttribute("src") && counter < 13) {
 
-            image[i].setAttribute("src", `./img/slides/${counter}.jpg`)
+            image[i].setAttribute("src", `view/img/slides/${counter}.jpg`)
 
         
           } else if (image[i].hasAttribute("src") && counter == 13) {

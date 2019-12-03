@@ -66,10 +66,11 @@
 
 
         </div>
-        <script src="./public/js/ranking.js"></script>
+        
         <script type="text/javascript">var userId = '<?php echo $session_userId; ?>';</script>
         <script src="./public/js/movieDB.js"></script>
         <script src="./public/js/drag_and_drop.js"></script>
+        <script src="./public/js/ranking.js"></script>
     </body>
 </html>
 

@@ -114,7 +114,6 @@ function deleteMovie(e) {
 		xhr.open('POST', 'index.php');
 		xhr.onreadystatechange = function() { //폴백
             if (xhr.readyState == 4 && xhr.status == 200) {
-
              console.log("success delete ajax");
             }
     }

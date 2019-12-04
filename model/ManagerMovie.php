@@ -53,19 +53,21 @@ class  ManagerMovie extends Manager {
    /**
     * UPDATE Movie SET ranking = CASE title WHEN 'Mulan' THEN 3 WHEN 'Aladin' THEN 1 END WHERE title IN('Mulan', 'Aladin')
     */
-   function updateRanking($params, $noMovies){
-
+   function updateRanking($params){
+      
+      $userId = $params['userId'];
+      $ranks = $params['ranks'];
       $db = $this->dbConnect();
+      echo "updateRanking in manager//rankingObj///";
+      
+      foreach ($ranks as $rank){
+         print_r($rank);
 
-            echo "updateRanking in manager//rankingObj///";
-
-
-      for($i = 1; $i < $noMovies + 1; $i++){
          $req=$db->prepare('UPDATE Movie SET ranking = :ranking WHERE title = :title AND user_id = :user_id'); 
          $req->execute(array(
-               'ranking' => $i,
-               'title' => $params[$i],
-               'user_id' => $params['userId']
+               'ranking' => $rank->number,
+               'title' => $rank->title,
+               'user_id' => $userId
          ));
       }
 

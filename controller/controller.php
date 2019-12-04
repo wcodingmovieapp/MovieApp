@@ -50,10 +50,10 @@ function deleteMovie($params){
     $managerMovie->deleteMovie($params);
 }
 
-function updateRanking($params, $noMovies){
+function updateRanking($params){
     echo "updateRanking of controller";
     $managerMovie = new ManagerMovie();
-    $managerMovie->updateRanking($params, $noMovies);
+    $managerMovie->updateRanking($params);
 }
 
 function subscribeUser($params) {

@@ -18,7 +18,7 @@
 
 
 <header>
-<?php print_r($user);?>
+
         <div class="header">
                 <!--Log out-->
                 <form align="right" name="logout" method="post" action="index.php?action=logoutUser" style="black">
@@ -50,7 +50,11 @@
         <div id="content">
             <div class="lists">
             <div class="list">
+
+        
+
             <?php
+
                 //String Interpolation......later???(I couldn't find how to use it.)
                 $noMovies = count($dataMovie);
                 for($id=0; $id<$noMovies; $id++){

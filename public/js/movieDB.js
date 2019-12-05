@@ -1,11 +1,9 @@
-//let userQuery = document.getElementById('title');
 let movieId = "";
 let movieTitle = "";
 let movieReleaseDate = "";
 let movieDirector = "";
 let movieActors = "";
 let moviePoster = "http://image.tmdb.org/t/p/w185/";
-// let user_id = 12;// SHOULD LINK USERID USING SESSION OR LINK IT WHEN WE GENERATE EVENTS.
 var divCardPlus = document.querySelector('#cardPlus');
 
 

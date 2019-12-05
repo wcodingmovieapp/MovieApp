@@ -26,6 +26,11 @@ function viewProfile($userId) {
     require("./view/profile.php");
 }
 
+function uploadProfileImg($params) {
+    echo "hello!! this is uploadProfileImg function";
+    print_r($params);
+}
+
 function loadProfile($postParams){
     $username = htmlspecialchars($postParams['username']);
     $password = htmlspecialchars($postParams['password']);

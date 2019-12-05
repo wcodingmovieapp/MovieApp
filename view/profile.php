@@ -17,16 +17,33 @@
 <body>
 
 
+<header>
+<?php print_r($user);?>
         <div class="header">
+                <!--Log out-->
                 <form align="right" name="logout" method="post" action="index.php?action=logoutUser" style="black">
                     <label class="logoutLblPos">
                     <input name="submit2" type="submit" id="submit2" value="logout">
                     </label>
                 </form>
+
+                <!--Profile image update-->
+                <form id="uploadImgForm" action="index.php?action=uploadProfileImg" method="POST" enctype="multipart/form-data">
+                    Select image to upload:
+                    <input type="file" name="profileImg" id="profileImg"/>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
+                    <input type="submit" value="Upload image" name="uploadBtn" value="SAVE"/>
+                </form>
+
+
+                <div class="user-profile">
+                
+                
+                <img src="./public/img/default.jpg"></div>
                 <h1><?=$user['username']?></h1>
                 <!-- <p>at button James404NotFound</p> -->
         </div> <!--header closed-->
-
+</header>
 
 
 

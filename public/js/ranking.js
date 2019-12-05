@@ -1,9 +1,6 @@
 let saveRanking = document.getElementById('save'); //[save] button
 
  let movieArr = [];
-     //movieArr.push(''); 
-     //To use movieArr index from 1 ==> movieArr[0] = null, movieArr[1] = 1st movie card title
-
 
     saveRanking.addEventListener('click', () => {
         //select elements of cards -> array

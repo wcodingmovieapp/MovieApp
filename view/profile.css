@@ -2,11 +2,19 @@
 
     body{
             display: grid;
-            background-color: #FF4D49;
+            background-color: white;
             font-family: Lato, sans-serif;
         }
 
-/*This is the header, I think? */
+
+        .user-profile{
+            margin: auto;
+            width: 25em; 
+          height: 11em;
+          background: #fff;
+          border-radius: .3em;
+        }
+
 .header {
     padding: 50px;
     text-align: center;
@@ -20,7 +28,7 @@
 
 
 
-/*This is the page content, I think? */
+
 
 .cards{
         position: relative;
@@ -32,9 +40,7 @@
         background: #F5F5F5;
         border-radius: 20px 20px;
     }
-.posters{
-           
-        }
+
  
         h1{
             font-size: 1.2em;
@@ -68,10 +74,10 @@
             letter-spacing: 1px;
             cursor: pointer;
  
-            &:hover {
+            /* &:hover {
               background: #BA7E7E;
               transition: all .4s ease-in-out;
-            }
+            } */
             
         }
  
@@ -87,7 +93,7 @@
              text-align: center;
              cursor: pointer;
             }
-    }
+    
     .button-container {
     display: flex;
     justify-content: center;

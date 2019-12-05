@@ -25,16 +25,19 @@ try {
             if (isset($_SESSION['userId'])) {
                 viewProfile($_SESSION['userId']);
             }
-            
+  
         } else if ($bodyArr['action'] == 'logoutUser') {
                 logoutUser();
+        } else if ($bodyArr['action'] == 'uploadProfileImg') {
+                echo "uploadProfileImg in index.php";
+                uploadProfileImg($bodyArr);
         } else if ($bodyArr['action'] == 'addMovie') {
                 addMovie($bodyArr);
         } else if ($bodyArr['action'] == 'deleteMovie'){
                 echo "action is deleteMovie in index.php";
                 deleteMovie($bodyArr);
         } else if ($bodyArr['action'] == 'updateRanking'){
-            updateRanking($bodyArr);
+                updateRanking($bodyArr);
         }
     }
     else {

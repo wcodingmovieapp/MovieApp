@@ -52,7 +52,7 @@ body {
 
 .hero {
 
-    overflow: hidden;
+    /* overflow: hidden; */
     display: flex;
 }
 
@@ -174,7 +174,7 @@ right: 5%;
     position: absolute;
     top: 0%;
     left: 5%;
-    font-size: 3em;
+    font-size: 1.8em;
 }
 
 #right-side h2 {
@@ -216,13 +216,13 @@ right: 5%;
 .phone-layout-border {
     width: 90%;
     margin: auto;
-    height: 120px;
+    height: 70px;
     padding: 2%;
     border: 3px solid white;
 }
 
 .phone-layout-bottom {  
-    height: 15vh;
+    height: 10vh;
     padding-left: 5%;
 
 }
@@ -231,14 +231,14 @@ right: 5%;
 .phone-layout-bottom span {
 
     z-index: 100;
-    font-size: 2em;
+    font-size: 1.5em;
     
 }
 
 .search-bar {
     position: absolute;
     top: 10%;
-    height: 35%;
+    height: 20%;
     border-bottom: 2px solid white;
     border-radius: 3%;
   

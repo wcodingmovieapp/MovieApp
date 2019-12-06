@@ -131,7 +131,7 @@
     </div>
     </div>
     </div>
-    <script src="./public/js/OAuth.js"></script>
-    <script src="./public/js/slider.js"></script>
+    <script src="../public/js/OAuth.js"></script>
+    <script src="../public/js/slider.js"></script>
   </body>
 </html>

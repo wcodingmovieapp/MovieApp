@@ -8,9 +8,18 @@
 
 let edit = document.querySelector('#edit');
 let save = document.querySelector('#save');
+let handOpen = document.querySelectorAll('#handOpen')
+let handClosed = document.querySelectorAll('#handClosed')
+
 
 
 save.addEventListener('click', () => { 
+	let handOpen = document.querySelectorAll('#handOpen')
+
+
+	for (let i = 0; i < handOpen.length; i++) {
+		handOpen[i].style.display = 'none'
+	}
 let del = document.querySelectorAll('#delete')
 let list_items = document.querySelectorAll('.cards'); // when i click save i don't want items to be editable or deletable
 	for (let i = 0; i < list_items.length; i++) { //loops through boxes
@@ -23,9 +32,15 @@ let list_items = document.querySelectorAll('.cards'); // when i click save i don
 })
 
 edit.addEventListener('click', () => { // when i click edit i want every item to be editable and deletable
+let handOpen = document.querySelectorAll('#handOpen')
+let handClosed = document.querySelectorAll('#handClosed')
+
 let del = document.querySelectorAll('#delete')
 let list_items = document.querySelectorAll('.cards');
 let lists = document.querySelectorAll('.list');
+for (let i = 0; i < handOpen.length; i++) {
+	handOpen[i].style.display = 'inline-block'
+}
 
 
 let childCon = document.querySelectorAll('.children-container')
@@ -37,12 +52,27 @@ let childCon = document.querySelectorAll('.children-container')
 		delItem.addEventListener('click', deleteMovie)
 	}
 
-	for (let i = 0; i < list_items.length-1; i++) { // i go through all of the cards
+	for (let i = 0; i < list_items.length; i++) { // i go through all of the cards
         let item = list_items[i]; // i select each card
-
+		list_items[i].style.cursor = "grab"
 		item.setAttribute("draggable", "true") // each card can now be dragged
 		
-		item.addEventListener('dragstart', function () { 
+		item.addEventListener('dragstart', function (e) { 
+			console.log(e)
+			item.style.cursor = "grab"
+			for (let i = 0; i < handOpen.length; i++) {
+				handOpen[i].style.display = 'none'
+			}
+			
+			for (let i = 0; i < handClosed.length; i++) {
+
+				if (e.path[0].children[7]) {
+					e.path[0].children[7].style.display = 'inline-block'
+				} else if (e.path[0].children[5]) {
+					e.path[0].children[5].style.display = 'inline-block'
+				}
+			}
+
             draggedItem = item;
             for (let x = 0; x < childCon.length; x++) {
 				childCon[x].style.display = "none";
@@ -55,6 +85,14 @@ let childCon = document.querySelectorAll('.children-container')
 		item.addEventListener('dragend', function () {
             for (let x = 0; x < childCon.length; x++) {
 				childCon[x].style.display = "block";
+				for (let i = 0; i < handOpen.length; i++) {
+					handOpen[i].style.display = 'inline-block'
+				}
+				
+				for (let i = 0; i < handClosed.length; i++) {
+					handClosed[i].style.display = 'none'
+				}
+			
 			}
 			setTimeout(function () {
 				draggedItem.style.display = 'block';
@@ -70,22 +108,24 @@ let childCon = document.querySelectorAll('.children-container')
 
 			list.addEventListener('dragover', function (e) {
 				e.preventDefault();
+				list.style.cursor = "grab"
 			});
 			
 			list.addEventListener('dragenter', function (e) {
                 
 				e.preventDefault();
-				this.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
+				list.style.cursor = "grab"
+	
 			});
 	
 			list.addEventListener('dragleave', function (e) {
        
-				this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
 			});
 	
 			list.addEventListener('drop', function (e) {
-                this.insertBefore(draggedItem, e.target);
-				this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+				this.insertBefore(draggedItem, e.target);
+				list.style.cursor = "grab"
+		
 			});
 		}
 	}
@@ -94,12 +134,18 @@ let childCon = document.querySelectorAll('.children-container')
 
 
 function deleteMovie(e) {
+	console.log(e)
 
 	let delThis = e.target.parentElement; // i select the parent element of the del button (which is the whole card)
 	delThis.remove(); // i remove that card
 
-	
-	var movieTitle = e.target.nextSibling.nextSibling.firstChild.textContent;
+	let movieTitle = ""
+
+	if (e.path[1].childNodes[1].textContent) {
+		movieTitle = e.path[1].childNodes[1].textContent
+	} else if (e.path[1].children[1].textContent) {
+		movieTitle = e.path[1].children[1].textContent
+	}
 
 	const delData = {
 		"userId": userId,
@@ -107,6 +153,19 @@ function deleteMovie(e) {
 		"action": "deleteMovie"
 	}
 
+	let cardItems = document.querySelectorAll('.cards');
+	let inputTitle = document.getElementById('title')
+	let searchButton = document.getElementById('search')
+	for (let i = 0; i < cardItems.length; i++) {
+		console.log(cardItems[i])
+		if (cardItems.length < 5) {
+		// inputTitle.setAttribute("placeholder", "5 movies only!")
+        // searchButton.style.display = 'none'
+		// } else {
+		searchButton.style.display = "inline-block"
+        inputTitle.removeAttribute('placeholder') 
+		}
+	}
 
 	var xhr = new XMLHttpRequest();
 		xhr.open('POST', 'index.php');
@@ -115,6 +174,8 @@ function deleteMovie(e) {
              console.log("success delete ajax");
             }
     }
-    xhr.send(JSON.stringify(delData));
+	xhr.send(JSON.stringify(delData));
+	
+	
 
 }

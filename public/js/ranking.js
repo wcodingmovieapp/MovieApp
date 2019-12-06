@@ -1,31 +1,45 @@
-let cards = document.querySelectorAll('.cards');
-let saveRanking = document.getElementById('save')
- 
+let saveRanking = document.getElementById('save'); //[save] button
 
-let movieArr = []
-saveRanking.addEventListener('click', () => {
-    for (let i = 0; i < cards.length; i++) {
-        let card = cards[i];
-        movieArr.push(card.firstElementChild.nextElementSibling.textContent)
-    }
+ let movieArr = [];
+     //movieArr.push(''); 
+     //To use movieArr index from 1 ==> movieArr[0] = null, movieArr[1] = 1st movie card title
 
-    let movieRanking = {
-        1: movieArr[0],
-        2: movieArr[1],
-        3: movieArr[2],
-        4: movieArr[3],
-        5: movieArr[4],
-        "action": "updateRanking"
-    }
 
-    var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'index.php');
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState == 4 && xhr.status == 200){
-                console.log("send new movieRanking to index.php");
+    saveRanking.addEventListener('click', () => {
+        //select elements of cards -> array
+        let cards = document.querySelectorAll('.cards');
+            //get title of each card after drag&drop
+            for (let i = 0; i < cards.length; i++) {
+                movieArr.push(cards[i].firstElementChild.nextElementSibling.textContent);
+            }
+        //Generate an object about movie lists to be updated
+        //common properties: action & userId
+        var movieRanking = {
+            "action": "updateRanking",
+            "userId": userId,
+            updateRanking: function(rankNb, title){
+                    let rank= {};
+                    rank.number = rankNb+1;
+                    rank.title = title;
+                    return rank;
             }
         }
-        xhr.send(JSON.stringify(movieRanking));
+        let ranks = [];
+        for(let i = 0; i < movieArr.length; i++){
+            let rank= movieRanking.updateRanking(i, movieArr[i]);
+            ranks.push(rank);
+        }
+        movieRanking['ranks'] = ranks;
+                console.log(movieRanking);
+
+        var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'index.php');
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4 && xhr.status == 200){
+                    console.log("send new movieRanking to index.php");
+                }
+            }
+            xhr.send(JSON.stringify(movieRanking));
 
 })
 

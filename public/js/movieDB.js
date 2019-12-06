@@ -4,9 +4,19 @@ let movieTitle = "";
 let movieReleaseDate = "";
 let movieDirector = "";
 let movieActors = "";
-let moviePoster = "http://image.tmdb.org/t/p/w185/";
+let moviePoster = "";
 // let user_id = 12;// SHOULD LINK USERID USING SESSION OR LINK IT WHEN WE GENERATE EVENTS.
 var divCardPlus = document.querySelector('#cardPlus');
+
+var inputTitle = document.getElementById('title')
+let searchButton = document.getElementById('search')
+
+
+searchButton.addEventListener('click', () => {
+  inputTitle.value = "";  
+})
+
+
 
 
 
@@ -20,11 +30,12 @@ function fetchData(user_id) {
   })
   .then(data => {
     // Work with JSON data here
-    
+
     movieId = data.results[0].id;
     movieTitle = data.results[0].title;
     movieReleaseDate = data.results[0].release_date;
-    moviePoster += data.results[0].poster_path;
+    moviePoster = `http://image.tmdb.org/t/p/w185/${data.results[0].poster_path}`
+   
     searchMovie(user_id);
   })
   .catch(err => {
@@ -74,7 +85,13 @@ function fetchData(user_id) {
   .catch(err => {
     // Do something for an error here
   })
+ 
+  
+  
   }
+
+
+
   /*show a new movie data*/ 
   function showNewMovie(newMovie){
 
@@ -116,4 +133,46 @@ function fetchData(user_id) {
         p.innerHTML = "Director: " + newMovie['director'] + "<br>" 
                       + "Actors: " + newMovie['actors'];
         divInfo.appendChild(p);
+    //show card
+    var handOpenSpan = document.createElement('span');
+    handOpenSpan.className = "hand-logo"
+    handOpenSpan.id = "handOpen"
+    divNewCard.appendChild(handOpenSpan);
+    var handClosedSpan = document.createElement('span');
+    handClosedSpan.className = "hand-logo"
+    handClosedSpan.id = "handClosed"
+    divNewCard.appendChild(handClosedSpan);
+    
+    var handOpen = document.createElement('i')
+    handOpen.className = "far fa-hand-paper"
+    handOpenSpan.appendChild(handOpen)
+    var handClosed = document.createElement('i')
+    handClosed.className = "far fa-hand-rock"
+    handClosedSpan.appendChild(handClosed)
   }
+
+
+  inputTitle.addEventListener('click', () => {
+
+    var countCards = document.querySelectorAll('.cards');
+    for (let i = 0; i <= countCards.length; i++) {
+     
+      if (countCards.length > 4) {
+        inputTitle.setAttribute("placeholder", "5 movies only!")
+        searchButton.style.display = 'none'
+
+      } else {
+        searchButton.style.display = "inline-block"
+        inputTitle.removeAttribute('placeholder') 
+        
+      }
+      
+    
+  
+    }
+  })
+
+
+
+
+

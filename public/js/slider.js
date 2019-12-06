@@ -28,12 +28,12 @@ let counter = 0;
 function imageCycle() {
     for (let i = 0; i<image.length; i++) {
         counter+= 1;
-        if (image[i].hasAttribute("src") && counter < 13) {
+        if (image[i].hasAttribute("src") && counter < 28) {
 
             image[i].setAttribute("src", `./img/slides/${counter}.jpg`)
 
         
-          } else if (image[i].hasAttribute("src") && counter == 13) {
+          } else if (image[i].hasAttribute("src") && counter == 28) {
             counter = 0;
           }
         
@@ -43,4 +43,4 @@ function imageCycle() {
     
 }
 
-setInterval(imageCycle, 300)  
+setInterval(imageCycle, 400)  

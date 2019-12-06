@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 21, 2019 at 06:55 AM
+-- Generation Time: Dec 06, 2019 at 02:16 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.3.8
 
@@ -37,13 +37,9 @@ CREATE TABLE `Movie` (
 --
 
 INSERT INTO `Movie` (`id`, `title`, `poster`, `director`, `actors`, `release_date`, `movie_id`, `user_id`, `ranking`) VALUES
-(30, 'Drive', 'http://image.tmdb.org/t/p/w185//nu7XIa67cXc2t7frXCE5voXUJcN.jpg', 'Nicolas Winding Refn', 'Ryan Gosling Carey Mulligan Bryan Cranston', '2011-08-06', 64690, 12, 1),
-(31, 'The Avengers', 'http://image.tmdb.org/t/p/w185//cezWGskPY5x7GaglTTRN4Fugfb8.jpg', 'Joss Whedon', 'Robert Downey Jr. Chris Evans Chris Hemsworth', '2012-04-25', 24428, 12, 1),
-(32, 'Rush Hour', 'http://image.tmdb.org/t/p/w185//jdfxpW5LF36sHsHjyH8CMBEG4TF.jpg', 'Brett Ratner', 'Jackie Chan Chris Tucker Ken Leung', '1998-09-18', 2109, 12, 1),
-(34, 'Jumanji: The Next Level', 'http://image.tmdb.org/t/p/w185//9Vp8MKqrwRAtvACF7PBwbvdG4dq.jpg', 'Jake Kasdan', 'Dwayne Johnson Jack Black Kevin Hart', '2019-12-04', 512200, 12, 1),
-(35, 'Rush Hour 2', 'http://image.tmdb.org/t/p/w185//kFeK17ZSogSxRxuupTxZ6PGklbj.jpg', 'Brett Ratner', 'Chris Tucker Jackie Chan Zhang Ziyi', '2001-08-03', 5175, 12, 1),
-(36, 'Fast & Furious Presents: Hobbs & Shaw', 'http://image.tmdb.org/t/p/w185//kvpNZAQow5es1tSY6XW2jAZuPPG.jpg', 'David Leitch', 'Dwayne Johnson Jason Statham Idris Elba', '2019-08-01', 384018, 12, 1),
-(37, 'Love Actually', 'http://image.tmdb.org/t/p/w185//kfX8Ctin3fSZbdnjh6CXSNZUOVP.jpg', 'Richard Curtis', 'Hugh Grant Colin Firth Lúcia Moniz', '2003-09-07', 508, 12, 1);
+(212, 'Drive', 'http://image.tmdb.org/t/p/w185//nu7XIa67cXc2t7frXCE5voXUJcN.jpg', 'Nicolas Winding Refn', 'Ryan Gosling Carey Mulligan Bryan Cranston', '2011-08-06', 64690, 12, 3),
+(226, 'Rush Hour', 'http://image.tmdb.org/t/p/w185//jdfxpW5LF36sHsHjyH8CMBEG4TF.jpg', 'Brett Ratner', 'Jackie Chan Chris Tucker Ken Leung', '1998-09-18', 2109, 12, 1),
+(229, 'Antz', 'http://image.tmdb.org/t/p/w185//3biVcPu5hrfKUMC73sTFq17dmmS.jpg', 'Tim Johnson', 'Woody Allen Dan Aykroyd Anne Bancroft', '1998-10-02', 8916, 12, 2);
 
 --
 -- Indexes for dumped tables
@@ -63,4 +59,4 @@ ALTER TABLE `Movie`
 -- AUTO_INCREMENT for table `Movie`
 --
 ALTER TABLE `Movie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=230;

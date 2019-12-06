@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 21, 2019 at 06:56 AM
+-- Generation Time: Dec 06, 2019 at 02:15 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.3.8
 
@@ -38,7 +38,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `imageurl`, `normal`, `fb`, `google`) VALUES
 (1, 'SteveR', 'Password12', 'steven.roe@outlook.com', NULL, NULL, NULL, NULL),
 (10, 'test', '$2y$10$3iBHRRvYue4pvdDn6tXZx.73L49uEfI0RUaKqtk0oKz58V.JjA1QG', 'test@test.com', NULL, 1, NULL, NULL),
-(12, 'Steven', 'googleconnexion', 'verzomusic@gmail.com', 'https://lh3.googleusercontent.com/a-/AAuE7mAas4eE7gEoqSwRUEW_s4fjcgO59SBuvg8TEI9h1w=s96-c', NULL, NULL, 1),
+(12, 'Steven', 'googleconnexion', 'verzomusic@gmail.com', './public/img/default.jpg', NULL, NULL, 1),
 (13, 'TesterMate', '$2y$10$vXyiYlyYjF1Licl8WUaRxuIgii0DYFjhjpDC7p.Qj9F553UIa/IeG', 'steven.roe@outlook.com', NULL, 1, NULL, NULL);
 
 --

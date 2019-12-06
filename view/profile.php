@@ -18,7 +18,7 @@
 <body>
 
 <div class="header-container">
-
+<header>
 <div class="header">
         <form align="right" name="logout" method="post" action="index.php?action=logoutUser" style="black">
             <label class="logoutLblPos">
@@ -28,7 +28,7 @@
         <h1><?=$user['username']?></h1>
         <img src='<?=$user['imageurl']?> 'alt="profile image"/>
 </div> <!--header closed-->
-
+</header>
 </div>
 
 
@@ -36,6 +36,8 @@
 
 <div class="lists">
 <div class="list">
+
+    <div>
 <?php
     //String Interpolation......later???(I couldn't find how to use it.)
     $noMovies = count($dataMovie);

@@ -34,6 +34,7 @@ function movieTitleRequest(inputVal) {
           //get rid of month/date
           titleDate.movieReleaseDate = titleDate.movieReleaseDate.slice(0, 4);
           searchList.push(titleDate);
+        
         }
       }
 

@@ -31,13 +31,16 @@
 </div>
 
 <div id="profileDiv">
-                <h1><?=$user['username']?></h1>
-                <img src='<?=$user['imageurl']?> 'alt="profile image"/>
-                <form method="POST" action="index.php?action=uploadImg" enctype="multipart/form-data">
+    
+                <img src='<?=$user['imageurl']?> 'alt="profile image" id="profile-image"/>
+                <div id="image-form-container">
+                <form name="imgForm"method="POST" action="index.php?action=uploadImg" enctype="multipart/form-data">
                     <input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
-                    <input type="file" name="profileImg"/><br />
-                    <input type='submit' name='submitBtn' value="SUBMIT"> />
+                    <label for="my-file" class="input-file-trigger">Edit Profile</label>
+                    <input type="file" name="profileImg" class="input-file" id="my-file" onchange="submitFile()"/><br />
+                    <!-- <input type='submit' name='submitBtn' value="SUBMIT" /> -->
                 </form>
+                </div>
             </div>
 
 
@@ -67,27 +70,34 @@
 
        
 <div id="cardPlus" class="input-card" draggable="false">
-        <br><br><br><br><!--vertical align: middle... was not working-->
-        <h1>+</h1>
-        <h1>ADD</h1>
-        <input type="text" name="title" id="title"/>
+  
+        <h1>Add a Movie</h1>
+        <input type="text" name="title" id="title" class="input-box"/>
         <input type="submit" value="search" id="search" onclick="fetchData(<?=$user['id']?>)" />
     <div class="button-container">
         <input class="button" id="edit" type="button" value="Edit" name="edit" />
         <input class="button" id="save" type="button" value="Save" />
     </div>
 </div>
-   
-
 
         </div>
         <div id="autocomplete"></div>
+       
         <script src="./public/js/ranking.js"></script>
         <script type="text/javascript">var userId = '<?php echo $session_userId; ?>';</script>
         <script src="./public/js/movieDB.js"></script>
         <script src="./public/js/drag_and_drop.js"></script>
         <script src="./public/js/autocomplete.js"></script>
     </body>
+
+    <script>
+        function submitFile(){
+            if(document.imgForm.profileImg.value !=""){
+                document.imgForm.action = "index.php?action=uploadImg";
+                document.imgForm.submit();
+            }
+        }
+    </script>
 </html>
 
 

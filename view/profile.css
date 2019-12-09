@@ -6,6 +6,10 @@ body {
     background: #FCF5EF;
 }
 
+*:focus {
+    outline-width: 0;
+}
+
 .header-container {
     position: relative;
     
@@ -28,6 +32,7 @@ body {
     margin:  0;
     padding: 30px 5%;
     z-index: 0;
+    height: 100px;
 }
 
 .header input {
@@ -48,14 +53,24 @@ body {
 .header h1 {
     font-size: 1em;
     color: #FCF5EF;
-    
+    position: absolute;
+    bottom: 80px; 
     float: left;
     z-index: inherit;
 }
 
-img {
+/* img {
     width: 180px;
     margin: 40px;
+} */
+
+#profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: absolute;
+    top: 70px;
+    left: 50px;
 }
 
 .children-container {
@@ -170,8 +185,8 @@ button {
     height: 80px;
     border-radius: 50%;
     position: absolute;
-    bottom: -13%;  
-    left: -8%;
+    bottom: 10%;  
+    left: 5%;
     -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(15%, transparent), to(rgba(255, 255, 255, 0.1)));
 
 }
@@ -191,8 +206,15 @@ button {
 }
 
 .input-card {
-   width: 100%;
-   height: 400px;
+    position: relative;
+    margin: auto;
+    margin-top: 10px;
+    width: 300px;
+    height: 180px;
+    background: rgba(112, 71, 213, 0.9);
+    box-shadow: 0 4px 8px 0 rgba(112, 93, 236, .2), 0 6px 20px 0 rgba(112, 93, 236, .2);
+    color: white;
+    border-radius: 20px 20px;
 }
 
 .hand-logo {
@@ -217,6 +239,9 @@ button {
     border: 1px solid #aaa;
     border-top-width: 0;
     background-color: #fff;
+    position: absolute;
+    top: 98vh;
+    left: 39%;
   }
   
   #autocomplete div {
@@ -232,3 +257,92 @@ button {
     background-color: #ddd !important;
   }
   
+
+  
+
+  .input-file-container {
+    position: relative;
+    width: 40px;
+    margin: 1.5em 0;
+  } 
+ .input-file-trigger {
+    display: block;
+    text-align: center;
+    padding: 6px;
+    background: #39D2B4;
+    color: white;
+    font-size: .8em;
+    transition: all .4s;
+    cursor: pointer;
+    width: 80px;
+  }
+ .input-file {
+    position: absolute;
+    top: 0; left: 0;
+    width: 40px;
+    opacity: 0;
+    padding: 14px 0;
+    cursor: pointer;
+  }
+ .input-file:hover + .input-file-trigger,
+ .input-file:focus + .input-file-trigger,
+ .input-file-trigger:hover,
+ .input-file-trigger:focus {
+    background: #34495E;
+    color: #39D2B4;
+  }
+  
+  .file-return {
+    margin: 0;
+  }
+  .file-return:not(:empty) {
+    margin: 1em 0;
+  }
+ .file-return {
+    font-style: italic;
+    font-size: .9em;
+    font-weight: bold;
+  }
+ .file-return:not(:empty):before {
+    content: "Selected file: ";
+    font-style: normal;
+    font-weight: normal;
+  }
+  
+
+  .input-box, .input-box:focus{
+    
+    width:150px;
+    font-size: 1em;
+    height: 30px;
+    padding: 3px;
+    margin:2px;
+    background-color:none;
+    color:black;
+    border-width: 0px;
+    outline:0; /* I have also tried outline:none */
+    -webkit-appearance:none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+
+
+
+  #search {
+      height: 30px;
+      background: none;
+      color: white;
+      padding: 5px;
+  }
+
+
+
+  #edit, #save {
+    height: 30px;
+    background: none;
+    color: white;
+    padding: 5px;
+    margin: 3px;
+  }
+

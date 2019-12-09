@@ -74,12 +74,12 @@ class ManagerUser extends Manager {
         return $user;
     }
 
-    function uploadImg($fileDestination){
+    function uploadImg($fileDestination, $userId){
         $db = $this->dbConnect();
         $req = $db->prepare("UPDATE users SET imageurl = :imageurl WHERE id = :userId");
         $req->execute(array(
             'imageurl' => $fileDestination,
-            'userId' => 12 // give a default value at this moment
+            'userId' => $userId // give a default value at this moment
         ));        
     }
     function subscribeUser($params) {

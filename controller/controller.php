@@ -4,7 +4,7 @@ require_once('./model/ManagerMovie.php');
 require_once('UploadFiles.php');
 
 function loginPage() {
-    require("./view/login.php");
+    require_once("./view/login.php");
 }
 // insert or connect the user
 function loginUser($params){
@@ -82,6 +82,8 @@ function logoutUser() {
 
 
 function uploadImg($params, $userId) {
+    echo "<br>this is userId in uploadImg in controller.php<br>";
+    echo $userId;
     $uploadFiles = new UploadFiles();
     $fileDestination = $uploadFiles -> validateFiles($params);
 

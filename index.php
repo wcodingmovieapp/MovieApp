@@ -28,7 +28,12 @@ try {
             
         } else if ($bodyArr['action'] == 'logoutUser') {
                 logoutUser();
-        } else if ($bodyArr['action'] == 'addMovie') {
+        } else if ($bodyArr['action'] == 'uploadImg') {
+                $userId = $_SESSION['userId'];
+                uploadImg($_FILES, $userId);
+        } 
+        
+        else if ($bodyArr['action'] == 'addMovie') {
                 addMovie($bodyArr);
         } else if ($bodyArr['action'] == 'deleteMovie'){
                 deleteMovie($bodyArr);

@@ -209,3 +209,26 @@ button {
     cursor: grab;
    display: none
 }
+
+
+/** Add here to search list item div style **/
+#autocomplete {
+    width: 228px;
+    border: 1px solid #aaa;
+    border-top-width: 0;
+    background-color: #fff;
+  }
+  
+  #autocomplete div {
+    width: 220px;
+    padding: 2px 4px;
+    text-align: left;
+    border: 0;
+    background-color: #fff;
+  }
+  
+  #autocomplete:hover,
+  .div_focus {
+    background-color: #ddd !important;
+  }
+  

@@ -1,6 +1,7 @@
 <?php 
 require_once('./model/ManagerUser.php');
 require_once('./model/ManagerMovie.php');
+require_once('UploadFiles.php');
 
 function loginPage() {
     require("./view/login.php");
@@ -77,4 +78,15 @@ function logoutUser() {
     session_destroy();
     header('Location: index.php');
 
+}
+
+
+function uploadImg($params, $userId) {
+    $uploadFiles = new UploadFiles();
+    $fileDestination = $uploadFiles -> validateFiles($params);
+
+    $managerUser = new ManagerUser();
+    $managerUser->uploadImg($fileDestination, $userId);
+
+    header('Location: index.php?action=viewProfile');
 }

@@ -100,7 +100,7 @@ function fetchData(user_id) {
     var divNewCard = document.createElement('div');
         target = document.getElementById("cardPlus")
         divNewCard.className="cards";//<div class="cards">
-        divList.insertBefore(divNewCard, target );
+        divList.insertBefore(divNewCard, target);
        // divList.appendChild(divNewCard);
     //[x]button: <input type="button" class="delete" name="delete" id="delete">
     var delBtn = document.createElement('input');

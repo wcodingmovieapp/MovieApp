@@ -74,6 +74,14 @@ class ManagerUser extends Manager {
         return $user;
     }
 
+    function uploadImg($fileDestination){
+        $db = $this->dbConnect();
+        $req = $db->prepare("UPDATE users SET imageurl = :imageurl WHERE id = :userId");
+        $req->execute(array(
+            'imageurl' => $fileDestination,
+            'userId' => 12 // give a default value at this moment
+        ));        
+    }
     function subscribeUser($params) {
         // Setting global variables for inputs to empty (prep for errors)
         $userErr = $emailErr = $passwordErr = "";
